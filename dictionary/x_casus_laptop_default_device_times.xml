@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Default device times" max_length="40" name="x_casus_laptop_default_device_times" type="collection">
+        <element label="Default time" mandatory="true" max_length="40" name="default_time" type="glide_duration"/>
+        <element display="true" label="Device type" mandatory="true" max_length="40" name="device_type" type="string"/>
+        <element label="Max renewal" mandatory="true" max_length="40" name="max_renewal" type="integer"/>
+        <element label="Max time" mandatory="true" max_length="40" name="max_time" type="glide_duration"/>
+    </element>
+</database>

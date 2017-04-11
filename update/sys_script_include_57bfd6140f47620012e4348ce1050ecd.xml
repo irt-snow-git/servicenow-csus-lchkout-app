@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_casus_laptop.CheckoutUtils</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>CheckoutUtils</name>
+        <script><![CDATA[var CheckoutUtils = Class.create();
+CheckoutUtils.prototype = {
+	initialize: function() {
+		/********************************
+		Nothing for this area yet
+ 		********************************/
+	},
+	
+	/*****************
+	Sample function
+ 	*****************/
+	sample: function(){
+		//do something
+	}, //do not forget the ,
+	
+	checkAvailabilityofDevice: function(name){
+		var gr = new GlideRecord('x_casus_laptop_devices_table');
+		gr.addQuery('device_id',name);
+		
+		//gr.addQuery("availability",1);
+		gr.query();
+		gr.next();
+		//		gs.addInfoMessage(gr.availability!="Available");
+		//		gs.addInfoMessage(gr.getValue("availablity")); // .getAttribute('availability'));
+		if (gr.availability=="Available"||gr.availability==1){
+			//gs.addInfoMessage("device is not available so Im sending false");
+			return true;
+		}
+		return false;
+	},
+	
+	checkForHolds: function(id){
+		var gr = new GlideRecord('x_casus_laptop_hold');
+		gr.addQuery('name',id);
+		gr.addQuery('active',true);
+		gr.query();
+		if (gr.getRowCount()==0){
+			return true;
+		}else{
+			return false;
+		}
+	},
+	
+	type: 'CheckoutUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>msn73</sys_created_by>
+        <sys_created_on>2016-11-08 19:46:32</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>57bfd6140f47620012e4348ce1050ecd</sys_id>
+        <sys_mod_count>50</sys_mod_count>
+        <sys_name>CheckoutUtils</sys_name>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_script_include_57bfd6140f47620012e4348ce1050ecd</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2017-03-21 22:18:26</sys_updated_on>
+    </sys_script_include>
+</record_update>

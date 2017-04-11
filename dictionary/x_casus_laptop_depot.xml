@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Depot" max_length="40" name="x_casus_laptop_depot" type="collection">
+        <element display="true" label="Depot" mandatory="true" max_length="40" name="depot" type="string" unique="true"/>
+        <index name="index">
+            <element name="depot"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Hold" max_length="40" name="x_casus_laptop_hold" type="collection">
+        <element label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="End date" max_length="40" name="end_date" type="glide_date_time"/>
+        <element label="Invoice" max_length="32" name="invoice" reference="x_casus_laptop_invoice" type="reference"/>
+        <element label="Name" max_length="32" name="name" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="name"/>
+        </index>
+        <index name="index2">
+            <element name="invoice"/>
+        </index>
+    </element>
+</database>

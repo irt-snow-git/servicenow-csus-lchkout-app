@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>device_name</field>
+        <global>true</global>
+        <messages/>
+        <name>Time AutoPopulate</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	if (isLoading || newValue === '') {
+		return;
+	}
+	
+	//Type appropriate comment here, and begin script below
+	var chkTime = g_form.getValue('checkout_time');
+	var ajax = new GlideAjax('CheckoutTimeUtils');
+	ajax.addParam('sysparm_name','getReturnTime');
+	ajax.addParam('sysparm_chkTime', chkTime);
+	ajax.addParam('sysparm_device', newValue);
+	ajax.getXMLAnswer(getTime);
+}
+function getTime(response){
+	//var answer = response.responseXML.documentElement.getAttribute("answer");
+	g_form.setValue('return_time', response);
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2017-03-21 21:07:12</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>ed81774f0fa1b60012e4348ce1050ec1</sys_id>
+        <sys_mod_count>53</sys_mod_count>
+        <sys_name>Time AutoPopulate</sys_name>
+        <sys_overrides display_value="">global</sys_overrides>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_script_client_ed81774f0fa1b60012e4348ce1050ec1</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2017-03-22 22:00:42</sys_updated_on>
+        <table>x_casus_laptop_checkout_table</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

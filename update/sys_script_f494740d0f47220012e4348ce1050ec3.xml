@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_label/>
+        <action_name/>
+        <action_query>false</action_query>
+        <action_run_at>server</action_run_at>
+        <action_update>true</action_update>
+        <active>false</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <application/>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_casus_laptop_checkout_table</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_casus_laptop_checkout_table">checkout_timeISEMPTY^state!=Closed Complete^EQ<item endquery="false" field="checkout_time" goto="false" newquery="false" operator="ISEMPTY" or="false" value=""/>
+            <item endquery="false" field="state" goto="false" newquery="false" operator="!=" or="false" value="Closed Complete"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message><![CDATA[<p>I ran the automatic checkout time rule</p>]]></message>
+        <name>Automatic checkout time</name>
+        <onclick/>
+        <order>100</order>
+        <priority>100</priority>
+        <read_access_action>false</read_access_action>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	
+	// Add your code here
+	
+	
+	if (current.state=='Closed Complete'){ //if the current state is closed complete just exit
+		return;
+	}
+	//gs.addInfoMessage('got pass the if statement');
+//	var dt = new GlideRecord('x_casus_laptop_default_device_times');
+	var start = new GlideDateTime();
+//	var day = new GlideDateTime();
+//	if (current.renewal_count>1){
+	//gs.addInfoMessage(start.toString());
+		current.checkout_time.setValue(start.toString()); // .setInitialValue(start.toString());
+//	} else{
+		
+//	}
+//	var endt;
+//	var dayofweek = day.getDayOfWeekLocalTime();
+	
+	/*
+	var lu = new LoanerUtils();
+	var lc = new LoanerBanChecker();
+	var ltc = new LoanerTypeChecker();
+	//current.description.setValue(current.start_date);
+	if ((gs.hasRole('loaner_admin')||gs.hasRole('admin')) && current.start_date!='' && current.end_date!='' && current.requested_for!=null && current.u_new_barcode!=null && current.u_user_id_number!=null && current.cmdb_ci!=null && current.u_device_type!=null){
+		return;
+	}
+	if (current.state==17){
+		return;
+	}
+//	current.description.setValue(current.start_date+" " + current.end_date+" " + current.requested_for+" " + current.u_new_barcode+" " + current.u_user_id_number+" " + current.cmdb_ci+" " + current.u_device_type);
+	if (lc.myFunction(current)||ltc.myFunction(current)&&!current.u_renewed){
+		current.setAbortAction(true);
+		return;
+	}
+	var gr = new GlideRecord('u_schedule_controller');
+	gr.addQuery('u_name',current.depot);
+	gr.query();
+	gr.next();
+	var gr2 = new GlideRecord('u_default_times_for_devices');
+	gr2.addQuery('sys_id',current.u_device_type.sys_id);
+	gr2.query();
+	gr2.next();
+	
+	if (current.u_renewed==false){
+		//current.description.setValue("I'm not suppost to renew and "+ current.u_renewed);
+		endt = start;
+	} else {
+		//gs.addInfoMessage("New time for renew");
+		//endt=current.end_date.getGlideObject();
+		endt= new GlideDateTime();
+	}
+	//current.description.setValue(gr2.u_hours_of_rental.dateNumericValue()+"  " + gr.u_monday_end.getDisplayValue());
+	endt.addSeconds(gr2.u_hours_of_rental.dateNumericValue()/1000);
+	//current.description.setValue(current);
+	var endofday, startofday;	
+	var d = new Date();
+	var t,t2;
+	var finder = true;
+	var num = gr2.u_hours_of_rental.dateNumericValue()/86400000;
+	num = Math.floor(num);
+	if (num<1) num=0;
+	var dayname;
+	var count = 0;
+	var test;
+	if (gr.getElement("u_start_date").dateNumericValue()>start.getNumericValue() || gr.getElement("u_end_date").dateNumericValue()<start.getNumericValue()){
+//		gs.addInfoMessage(gr.getElement("u_start_date").dateNumericValue());
+		current.setAbortAction(true);
+		gs.addErrorMessage("Today is outside of the scheduled open dates");
+		return;
+	}
+	while (finder&&count<7&&num>=0){
+		count++;
+		switch ((dayofweek+num)%7){
+			case 1:
+				dayname = 'monday';
+				test = gr.getElement("u_open_on_monday");
+				if (!gr.u_open_on_monday) {
+					if (num<=0){
+						current.setAbortAction(true);
+						return;
+					}
+					num--;
+				} else{
+					dayofweek=1;
+					finder=false;
+					t = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_monday_end.getDisplayValue());
+					t2 = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_monday_start.getDisplayValue());
+				}	
+				break;
+			case 2:
+				dayname = 'tuesday';
+				if (!gr.u_open_on_tuesday) {
+					num--;
+				} else{
+					dayofweek=2;
+					finder=false;
+					t = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_tuesday_end.getDisplayValue());
+					t2 = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_tuesday_start.getDisplayValue());
+				}
+				break;
+			case 3:
+				dayname = 'wednesday';
+				if (!gr.u_open_on_wednesday) {
+					num--;
+				} else{
+					dayofweek=3;
+					finder=false;
+					t = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_wednesday_end.getDisplayValue());
+					t2 = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_wednesday_start.getDisplayValue());
+				}
+				break;
+			case 4:
+				dayname = 'thursday';
+				if (!gr.u_open_on_thursday) {
+					num--;
+				} else{
+					dayofweek=4;
+					finder=false;
+					t = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_thursday_end.getDisplayValue());
+					t2 = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_thursday_start.getDisplayValue());
+				}
+				break;
+			case 5:
+				dayname = 'friday';
+				if (!gr.u_open_on_friday) {
+					if (num<=0){
+						current.setAbortAction(true);
+						gs.addErrorMessage("Temp holder in bus rule");
+						return;
+					}
+					num--;
+				} else{
+					dayofweek=5;
+					finder=false;
+					t = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_friday_end.getDisplayValue());
+					t2 = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_friday_start.getDisplayValue());
+				}
+				break;
+			case 6:
+				dayname = 'saturday';
+				if (!gr.u_open_on_saturday) {
+					num--;
+				} else{
+					dayofweek=6;
+					finder=false;
+					t = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_saturday_end.getDisplayValue());
+					t2 = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_saturday_start.getDisplayValue());
+				}
+				break;
+			case 0:
+				dayname = 'sunday';
+				test = gr.getElement("u_open_on_sunday");
+				if (!gr.u_open_on_sunday) {
+					num--;
+				} else{
+					dayofweek=7;
+					finder=false;
+					t = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_sunday_end.getDisplayValue());
+					t2 = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_sunday_start.getDisplayValue());
+				}
+				break;
+			
+			default:
+				break;
+		}
+		//gs.addInfoMessage(num);
+	}
+	//gs.addInfoMessage(count);
+	if (count==7){
+		num= 0-1;
+		gs.addErrorMessage("All days are marked as closed");
+	}
+	if (current.state != 3){ //
+
+	//if (dayofweek==1 ) {
+	//t = Date.parse(day.getYearLocalTime()+"/"+day.getMonthLocalTime()+"/"+day.getDayOfMonthLocalTime()+" "+gr.u_monday_end.getDisplayValue());
+		endofday = new GlideDateTime();
+		startofday = new GlideDateTime();
+		t=t+86400000*num;
+		t2=t2+86400000*num;
+		endofday.setNumericValue(t.toPrecision(13));
+		startofday.setNumericValue(t2.toPrecision(13));
+		//current.description.setValue("endt = "+endt.getNumericValue()+ " endofday = "+endofday.getNumericValue());
+		//current.description.setValue("Monday");
+		//current.description.setValue(t.toPrecision(13));
+		if (endt.getNumericValue()>endofday.getNumericValue()){
+			current.end_date.setInitialValue(endofday.toString());
+		} else {
+			current.end_date.setInitialValue(endt.toString());
+		}
+		if (endt.getNumericValue()<startofday.getNumericValue()){
+			current.end_date.setInitialValue(startofday.toString());
+		} else {
+			current.end_date.setInitialValue(endt.toString());
+		}
+	}
+	//current.description.setValue(current.cmdb_ci.install_status);
+	if (!lu.isAvailable(current.cmdb_ci, current.start_date, current.end_date) &&current.state!="Closed Complete"||current.cmdb_ci.install_status==3) {
+		if (!current.u_renewed){
+			current.setAbortAction(true);
+			if (current.cmdb_ci.install_status==3){
+				current.cmdb_ci.setError("Device is unavailable");
+			}
+		}
+	}
+	if (t2==null&&num<0&&count<7){
+		current.setAbortAction(true);
+		gs.addErrorMessage("The current day is unavailable");
+	}
+	//current.start_date.setValue(gs.nowDateTime());*/
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>msn73</sys_created_by>
+        <sys_created_on>2016-11-10 19:25:55</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>f494740d0f47220012e4348ce1050ec3</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Automatic checkout time</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_script_f494740d0f47220012e4348ce1050ec3</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2017-03-21 21:06:56</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+</record_update>

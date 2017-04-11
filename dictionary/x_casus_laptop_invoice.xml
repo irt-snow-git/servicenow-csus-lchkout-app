@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Invoice" max_length="40" name="x_casus_laptop_invoice" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Description" max_length="700" name="description" type="string"/>
+        <element label="Hold" max_length="32" name="hold" reference="x_casus_laptop_hold" type="reference"/>
+        <element label="Name" max_length="32" name="name" reference="sys_user" type="reference"/>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <index name="index">
+            <element name="name"/>
+        </index>
+        <index name="index2">
+            <element name="hold"/>
+        </index>
+    </element>
+</database>
