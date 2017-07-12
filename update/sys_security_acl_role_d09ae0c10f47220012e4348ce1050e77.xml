@@ -4,7 +4,7 @@
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-10 18:41:11</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>d09ae0c10f47220012e4348ce1050e77</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_casus_laptop_checkout_table.Student Assistant</sys_name>
@@ -16,7 +16,7 @@
         <sys_update_name>sys_security_acl_role_d09ae0c10f47220012e4348ce1050e77</sys_update_name>
         <sys_updated_by>msn73</sys_updated_by>
         <sys_updated_on>2016-11-10 18:41:11</sys_updated_on>
-        <sys_user_role display_value="Student Assistant" name="Student Assistant">fe2ae4c50f47220012e4348ce1050e6b</sys_user_role>
+        <sys_user_role display_value="x_casus_laptop.student_assistant" name="x_casus_laptop.student_assistant">fe2ae4c50f47220012e4348ce1050e6b</sys_user_role>
         <transaction_id/>
     </sys_security_acl_role>
 </record_update>

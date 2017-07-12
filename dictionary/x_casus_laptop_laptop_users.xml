@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<database>
-    <element label="Laptop Users" max_length="40" name="x_casus_laptop_laptop_users" type="collection">
-        <element label="Name" max_length="32" name="name" reference="sys_user" type="reference"/>
-        <index name="index">
-            <element name="name"/>
-        </index>
-    </element>
-</database>

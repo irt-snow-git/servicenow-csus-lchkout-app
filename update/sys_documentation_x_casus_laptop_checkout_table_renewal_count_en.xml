@@ -12,7 +12,7 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>msn73</sys_created_by>
             <sys_created_on>2016-11-01 23:24:35</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_id>3b6597860f7a6e0012e4348ce1050e83</sys_id>
             <sys_mod_count>1</sys_mod_count>
             <sys_name>Renewal Count</sys_name>

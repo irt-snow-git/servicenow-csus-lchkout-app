@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element label="Devices Table" max_length="40" name="x_casus_laptop_devices_table" type="collection">
+    <element label="Devices" max_length="40" name="x_casus_laptop_devices_table" type="collection">
         <element label="Barcode" mandatory="true" max_length="40" name="barcode" type="string" unique="true"/>
         <element label="Condition" max_length="40" name="condition" type="string"/>
         <element label="Depot" mandatory="true" max_length="32" name="depot" reference="x_casus_laptop_depot" type="reference"/>

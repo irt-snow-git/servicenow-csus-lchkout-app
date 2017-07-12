@@ -51,7 +51,7 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-08 03:06:37</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>c7c107086fcf6200ad6cd4a21c3ee49b</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_casus_laptop_default_device_times</sys_name>

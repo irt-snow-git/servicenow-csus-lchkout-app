@@ -9,7 +9,7 @@
         <sys_class_name>ua_table_licensing_config</sys_class_name>
         <sys_created_by>longlim</sys_created_by>
         <sys_created_on>2016-11-01 23:01:42</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>b8301f826f7a2a00ad6cd4a21c3ee40f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_casus_laptop_checkout_table</sys_name>

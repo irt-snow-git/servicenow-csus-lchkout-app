@@ -12,7 +12,7 @@
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-01 23:19:17</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>1a349f460f7a6e0012e4348ce1050ed2</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_casus_laptop_devices_table</sys_name>

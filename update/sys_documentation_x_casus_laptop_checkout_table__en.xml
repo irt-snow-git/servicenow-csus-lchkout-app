@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_documentation element="" label="Laptop Checkout Table" language="en" table="x_casus_laptop_checkout_table">
+    <sys_documentation element="" label="Checkout Tickets" language="en" table="x_casus_laptop_checkout_table">
         <sys_documentation action="INSERT_OR_UPDATE">
             <element/>
             <help/>
             <hint/>
-            <label>Laptop Checkout Table</label>
+            <label>Checkout Tickets</label>
             <language>en</language>
             <name>x_casus_laptop_checkout_table</name>
-            <plural>Laptop Checkout Tables</plural>
+            <plural>Checkout Tickets</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>longlim</sys_created_by>
             <sys_created_on>2016-11-01 23:01:41</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_id>f0301f826f7a2a00ad6cd4a21c3ee408</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_name>Laptop Checkout Table</sys_name>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_name>Checkout Tickets</sys_name>
             <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
             <sys_update_name>sys_documentation_x_casus_laptop_checkout_table__en</sys_update_name>
-            <sys_updated_by>longlim</sys_updated_by>
-            <sys_updated_on>2016-11-01 23:01:41</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2017-06-13 16:39:14</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

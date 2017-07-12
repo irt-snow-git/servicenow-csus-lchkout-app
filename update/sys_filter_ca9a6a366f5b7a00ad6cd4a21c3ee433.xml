@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_filter">
+    <sys_filter action="INSERT_OR_UPDATE">
+        <filter table="syslog_app_scope">sys_created_onONToday@javascript:gs.daysAgoStart(0)@javascript:gs.daysAgoEnd(0)^sys_scope=ba205f426f7a2a00ad6cd4a21c3ee477<item endquery="false" field="sys_created_on" goto="false" newquery="false" operator="ON" or="false" value="Today@javascript:gs.daysAgoStart(0)@javascript:gs.daysAgoEnd(0)"/>
+            <item display_table="sys_scope" display_value="Laptop Checkout" endquery="false" field="sys_scope" goto="false" newquery="false" operator="=" or="false" value="ba205f426f7a2a00ad6cd4a21c3ee477"/>
+        </filter>
+        <group/>
+        <last_used/>
+        <mobile>false</mobile>
+        <roles/>
+        <sys_class_name>sys_filter</sys_class_name>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2017-06-15 20:55:23</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>ca9a6a366f5b7a00ad6cd4a21c3ee433</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Laptop Checkout</sys_name>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_filter_ca9a6a366f5b7a00ad6cd4a21c3ee433</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2017-06-15 20:55:23</sys_updated_on>
+        <table>syslog_app_scope</table>
+        <title>Laptop Checkout</title>
+        <user display_value="Nicholas Hedge">b42c9dcd95e31500c74359871d51e499</user>
+    </sys_filter>
+</record_update>

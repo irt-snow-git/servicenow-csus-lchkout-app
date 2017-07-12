@@ -51,7 +51,7 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-15 20:41:32</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>4d36fe6e0f47a20012e4348ce1050e64</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>End date</sys_name>

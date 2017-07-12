@@ -4,7 +4,7 @@
         <action_name>Checkout</action_name>
         <active>true</active>
         <client>false</client>
-        <comments/>
+        <comments>Moves the checkout ticket from the "Beginning" state into the "Confirming" state. Checks for valid field inputs are done through client scripts to allow the user to stay on the page.</comments>
         <condition>current.state=='Beginning'</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
@@ -19,12 +19,20 @@
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
         <name>Checkout</name>
-        <onclick>runclientcode()</onclick>
+        <onclick>runClientCode()</onclick>
         <order>100</order>
-        <script><![CDATA[current.state="Confirming";
-current.update();
-action.setRedirectURL(current);
-]]></script>
+        <script><![CDATA[//TODO: INCLUDE CHECKS IN THIS UI ACTION AS WELL TO PREVENT USERS FROM CIRCUMVENTING THE CLIENT SCRIPTS
+//if(current.checkout_time.getNumericValue() < current.return_time.getNumericValue()){
+	if(current.device_name.state == 3){
+		current.state="Confirming";
+		current.update();
+		action.setRedirectURL(current);
+	}else{
+		gs.addErrorMessage("Device is currently unavailable.");
+	}
+//}else{
+//	gs.addErrorMessage("Return Time must be after Checkout Time");
+//}]]></script>
         <show_insert>true</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -32,10 +40,10 @@ action.setRedirectURL(current);
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-08 03:48:56</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>d94bc3c86fcf6200ad6cd4a21c3ee4ed</sys_id>
-        <sys_mod_count>30</sys_mod_count>
+        <sys_mod_count>70</sys_mod_count>
         <sys_name>Checkout</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -44,7 +52,7 @@ action.setRedirectURL(current);
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_d94bc3c86fcf6200ad6cd4a21c3ee4ed</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-04-10 20:21:37</sys_updated_on>
+        <sys_updated_on>2017-05-11 17:31:59</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

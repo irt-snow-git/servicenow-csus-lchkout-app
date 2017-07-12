@@ -4,7 +4,7 @@
         <action_name>Renew</action_name>
         <active>true</active>
         <client>false</client>
-        <comments/>
+        <comments>Extends the Return Time of a Checkout Ticket based on the Default Checkout Time associated with the Device's device type.</comments>
         <condition>current.state=='Checked Out'</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
@@ -19,36 +19,46 @@
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
         <name>Renew</name>
-        <onclick/>
+        <onclick>runClientCode()</onclick>
         <order>100</order>
-        <script><![CDATA[if(current.renewal_count < current.device_name.device_type.max_renewal)
-{
-	var i = current.renewal_count;
-	i += 1;
-	current.renewal_count = i;
+        <script><![CDATA[if(current.renewal_count < current.device_name.device_type.max_renewal){
+	var now = new GlideDateTime();
+	var return_time = new GlideDateTime(current.return_time);
 	
-	var newReturn = new GlideDateTime(); //automatically set to current Date/Time
-	
-	newReturn.addSeconds(current.device_name.device_type.default_time.dateNumericValue() / 1000);
-	current.return_time = newReturn;
-	
-	current.state="Confirming";
-	current.update();
+	if(now.compareTo(return_time) == -1){
+		var i = current.renewal_count;
+		i += 1;
+		current.renewal_count = i;
+		
+		var newReturn = new GlideDateTime(); //automatically set to current Date/Time
+		var default_time = new GlideDateTime(current.device_name.device_type.default_time);
+		
+		newReturn.add(default_time.getNumericValue());
+		current.return_time = newReturn;
+		//current.state="Confirming";
+		current.update();
+		
+		gs.addInfoMessage(current.device_name.device_type.device_type + " " + current.device_name.device_id + 
+						  " Renewed Until " + current.return_time.getDisplayValue());
+	}else{
+		gs.addErrorMessage('Renewal is not allowed past return time.');
+		action.setRedirectURL(current);
+	}
 }else{
-	gs.addErrorMessage("Can not check out again!");
-}
-action.setRedirectURL(current);]]></script>
-        <show_insert>true</show_insert>
+	gs.addErrorMessage("Can not check out device again!");
+	action.setRedirectURL(current);
+}]]></script>
+        <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
         <show_update>true</show_update>
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-08 03:50:33</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_id>
-        <sys_mod_count>40</sys_mod_count>
+        <sys_mod_count>80</sys_mod_count>
         <sys_name>Renew</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -57,7 +67,7 @@ action.setRedirectURL(current);]]></script>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-03-28 21:42:29</sys_updated_on>
+        <sys_updated_on>2017-06-14 18:37:10</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

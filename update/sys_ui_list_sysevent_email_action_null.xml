@@ -163,10 +163,10 @@
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-04-10 20:55:12</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_created_on>2017-04-13 17:09:38</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_id>bf91b22d0f0ebe0012e4348ce1050e99</sys_id>
+            <sys_id>fcca59666f8efe00ad6cd4a21c3ee46f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>sysevent_email_action</sys_name>
             <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -175,7 +175,7 @@
             <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
             <sys_update_name>sys_ui_list_sysevent_email_action_null</sys_update_name>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-04-10 20:55:12</sys_updated_on>
+            <sys_updated_on>2017-04-13 17:09:38</sys_updated_on>
             <sys_user display_value="Nicholas Hedge">b42c9dcd95e31500c74359871d51e499</sys_user>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

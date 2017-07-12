@@ -27,7 +27,7 @@
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>longlim</sys_created_by>
         <sys_created_on>2016-11-01 23:01:44</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>95301f826f7a2a00ad6cd4a21c3ee42d</sys_id>
         <sys_mod_count>10</sys_mod_count>

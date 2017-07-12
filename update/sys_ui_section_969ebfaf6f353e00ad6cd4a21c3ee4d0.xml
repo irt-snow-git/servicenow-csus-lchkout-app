@@ -146,7 +146,7 @@
             <sys_class_name>sys_ui_section</sys_class_name>
             <sys_created_by>hedge</sys_created_by>
             <sys_created_on>2017-04-04 21:23:39</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_id>969ebfaf6f353e00ad6cd4a21c3ee4d0</sys_id>
             <sys_mod_count>0</sys_mod_count>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_filter">
+    <sys_filter action="INSERT_OR_UPDATE">
+        <filter table="x_casus_laptop_checkout_table">active=true^center=5100cbc46fcf6200ad6cd4a21c3ee46f^return_time&lt;javascript:gs.minutesAgoStart(0)<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/>
+            <item display_table="x_casus_laptop_depot" display_value="AIRC" endquery="false" field="center" goto="false" newquery="false" operator="=" or="false" value="5100cbc46fcf6200ad6cd4a21c3ee46f"/>
+            <item endquery="false" field="return_time" goto="false" newquery="false" operator="&lt;" or="false" value="javascript:gs.minutesAgoStart(0)"/>
+        </filter>
+        <group/>
+        <last_used/>
+        <mobile>false</mobile>
+        <roles/>
+        <sys_class_name>sys_filter</sys_class_name>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2017-04-12 19:33:05</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>d802f0de0fcafe0012e4348ce1050ebf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Late Laptops</sys_name>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_filter_d802f0de0fcafe0012e4348ce1050ebf</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2017-04-12 19:33:05</sys_updated_on>
+        <table>x_casus_laptop_checkout_table</table>
+        <title>Late Laptops</title>
+        <user display_value="Nicholas Hedge">b42c9dcd95e31500c74359871d51e499</user>
+    </sys_filter>
+</record_update>

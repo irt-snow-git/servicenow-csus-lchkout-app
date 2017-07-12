@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sys_user_role_contains">
     <sys_user_role_contains action="INSERT_OR_UPDATE">
-        <contains display_value="Library Center" name="Library Center">ac5cecdf6f8fa200ad6cd4a21c3ee433</contains>
-        <role display_value="Library Admin" name="Library Admin">ecc9155b0fc3e20012e4348ce1050e4f</role>
+        <contains display_value="x_casus_laptop.library_center" name="x_casus_laptop.library_center">ac5cecdf6f8fa200ad6cd4a21c3ee433</contains>
+        <role display_value="x_casus_laptop.library_manager" name="x_casus_laptop.library_manager">ecc9155b0fc3e20012e4348ce1050e4f</role>
         <sys_class_name>sys_user_role_contains</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-12-02 18:45:34</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>97debd806f2f2a00ad6cd4a21c3ee430</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Library Center.Library Admin</sys_name>

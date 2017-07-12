@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element label="Default device times" max_length="40" name="x_casus_laptop_default_device_times" type="collection">
-        <element label="Default time" mandatory="true" max_length="40" name="default_time" type="glide_duration"/>
-        <element display="true" label="Device type" mandatory="true" max_length="40" name="device_type" type="string"/>
-        <element label="Max renewal" mandatory="true" max_length="40" name="max_renewal" type="integer"/>
-        <element label="Max time" mandatory="true" max_length="40" name="max_time" type="glide_duration"/>
+    <element label="Device Types" max_length="40" name="x_casus_laptop_default_device_times" type="collection">
+        <element label="Grace Period" mandatory="true" max_length="40" name="default_grace_period" type="glide_duration"/>
+        <element label="Default Time" mandatory="true" max_length="40" name="default_time" type="glide_duration"/>
+        <element display="true" label="Device Type" mandatory="true" max_length="40" name="device_type" type="string"/>
+        <element default="0" label="Late Fee" max_length="40" name="late_fee" type="currency"/>
+        <element label="Max Renewal" mandatory="true" max_length="40" name="max_renewal" type="integer"/>
+        <element label="Max Time" mandatory="true" max_length="40" name="max_time" type="glide_duration"/>
     </element>
 </database>

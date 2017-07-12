@@ -3,37 +3,84 @@
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>package_private</access>
         <active>true</active>
-        <api_name>x_casus_laptop.CheckoutTimeUtils</api_name>
+        <api_name>x_casus_laptop.CheckoutFormUtils</api_name>
         <client_callable>true</client_callable>
-        <description/>
-        <name>CheckoutTimeUtils</name>
-        <script><![CDATA[var CheckoutTimeUtils = Class.create();
-CheckoutTimeUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+        <description>Functions used in the Laptop Checkoput Table Form. Used to verify that all form information is valid before submission.</description>
+        <name>CheckoutFormUtils</name>
+        <script><![CDATA[var CheckoutFormUtils = Class.create();
+CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 	
-	getReturnTime: function(){
+	//Verifies that the device is available, creates a default return time, and returns the device's associated depot
+	getDeviceFormInfo: function(){
 		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_chkTime'));
 		var device = new GlideRecord('x_casus_laptop_devices_table');
 		device.get(this.getParameter('sysparm_device'));
 		checkoutTime.addSeconds(device.device_type.default_time.dateNumericValue() / 1000);
+		
 		//check for valid return time here
-		return checkoutTime;
+		
+		//Put Return Time, Depot, and Available variables into XML
+		var returnTag = this.newItem("returnTag");
+		returnTag.setAttribute("returnTime", checkoutTime);
+		
+		var depotTag = this.newItem("depotTag");
+		depotTag.setAttribute("depot", device.depot);
+		
+		var availTag = this.newItem("availTag");
+		if(device.state == 3){
+			availTag.setAttribute("available", "true");
+		}else{
+			availTag.setAttribute("available", "false");
+		}
 	},
 	
-    type: 'CheckoutTimeUtils'
+	//Verifies that the User is a student and has no holds
+	checkStudent: function(){
+		var student = new GlideRecord('sys_user');
+		student.get(this.getParameter('sysparm_student'));
+		
+		//Put User's student status into XML
+		var studentTag = this.newItem("studentTag");
+		studentTag.setAttribute("isStudent", student.u_student);
+		
+		//Check if User has holds
+		var holds = new GlideRecord('x_casus_laptop_hold');
+		holds.addActiveQuery();
+		holds.query();
+		
+		var hasHold = "false";
+		while(holds.hasNext()){
+			holds.next();
+			if(student.sys_id == holds.checkout_ticket.student_name.sys_id){
+				hasHold = "true";
+			}
+		}
+		//Put boolean in XML based on how many holds the User has
+		var holdTag = this.newItem("holdTag");
+		holdTag.setAttribute("hasHold", hasHold);
+	},
+	
+	//Returns curernt time: used for list filtering
+	getNowDateTime: function(){
+		var now = gs.minutesAgoStart(0);
+		return now;
+	},
+		
+    type: 'CheckoutFormUtils'
 });]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>hedge</sys_created_by>
         <sys_created_on>2017-03-22 21:08:10</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>59b670236fa9b600ad6cd4a21c3ee4d1</sys_id>
-        <sys_mod_count>25</sys_mod_count>
-        <sys_name>CheckoutTimeUtils</sys_name>
+        <sys_mod_count>49</sys_mod_count>
+        <sys_name>CheckoutFormUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_59b670236fa9b600ad6cd4a21c3ee4d1</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-03-28 21:42:39</sys_updated_on>
+        <sys_updated_on>2017-06-13 22:22:06</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name>reactivate</action_name>
+        <active>true</active>
+        <client>true</client>
+        <comments>Reactivates a ticket and changes the state to 'Closed Incomplete'. Intended for use when a closed ticket needs to be updated with information such as damage that may have occurred while in the customer's possesion.</comments>
+        <condition>current.state == 'Closed Complete'</condition>
+        <form_action>true</form_action>
+        <form_button>true</form_button>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <hint/>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <name>Reactivate</name>
+        <onclick>reopen()</onclick>
+        <order>100</order>
+        <script><![CDATA[//Client-side 'onclick' function
+function reopen(){
+	if(g_form.getValue('notes') == ''){
+		//Remove any existing field message, set comments mandatory, and show a new field message
+		g_form.hideFieldMsg('notes');
+		g_form.setMandatory('notes', true);
+		g_form.showFieldMsg('notes','Notes are mandatory when reopening a Checkout Ticket.','error');
+		return false;  //Abort submission
+	}
+	//Call the UI Action and skip the 'onclick' function
+	gsftSubmit(null, g_form.getFormElement(), 'reactivate'); //MUST call the 'Action name' set in this UI Action
+}
+
+//Code that runs without 'onclick'
+//Ensure call to server-side function with no browser errors
+if(typeof window == 'undefined')
+	serverReopen();
+
+function serverReopen(){
+	//Set the 'State' to 'Closed Incomplete', update and reload the record
+	current.active = true;
+	current.state = 'Closed Incomplete';
+	current.update();
+	gs.addInfoMessage('Device Ticket ' + current.number + ' reactivated.');
+	action.setRedirectURL(current);
+}]]></script>
+        <show_insert>false</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2017-04-18 15:52:34</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>2556bec86f9e7240ad6cd4a21c3ee487</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Reactivate</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_ui_action_2556bec86f9e7240ad6cd4a21c3ee487</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2017-06-14 17:54:17</sys_updated_on>
+        <table>x_casus_laptop_checkout_table</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>true</ui16_compatible>
+    </sys_ui_action>
+</record_update>

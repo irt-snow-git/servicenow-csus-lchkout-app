@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_macro">
+    <sys_ui_macro action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <category>general</category>
+        <description>This UI Macro should appear on the Laptop Checkout Table Form next to the Checkout Time field. When pressed, it will insert the current time into the checkout field.</description>
+        <media_type/>
+        <name>resetCheckoutTime</name>
+        <scoped_name>x_casus_laptop_resetCheckoutTime</scoped_name>
+        <sys_class_name>sys_ui_macro</sys_class_name>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2017-04-26 21:33:41</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>ce011dba0f9e764012e4348ce1050e05</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>resetCheckoutTime</sys_name>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_ui_macro_ce011dba0f9e764012e4348ce1050e05</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2017-05-10 19:33:26</sys_updated_on>
+        <xml><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<j:set var="jvar_n" value="resetCheckoutTime_${ref}"/>
+	<span id="${jvar_n}" onclick="resetCheckoutTime('${ref}')" title="Reset" alt="Reset" tabindex="0" class="btn btn-default icon-refresh">
+		<span class="sr-only">Reset</span>
+	</span>
+	
+	<g:evaluate var="jvar_time" expression="
+		var time = new GlideDateTime();
+		time.getDisplayValue();" />
+	
+	<script>
+		function resetCheckoutTime(reference){
+			var s = reference.split('.');
+			var referenceField = s[1];
+			g_form.setValue(referenceField, '${jvar_time}');
+		}
+	</script>
+</j:jelly>]]></xml>
+    </sys_ui_macro>
+</record_update>

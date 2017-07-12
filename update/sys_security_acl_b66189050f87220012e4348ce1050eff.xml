@@ -12,7 +12,7 @@
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-10 20:21:15</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>b66189050f87220012e4348ce1050eff</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_casus_laptop_checkout_table</sys_name>

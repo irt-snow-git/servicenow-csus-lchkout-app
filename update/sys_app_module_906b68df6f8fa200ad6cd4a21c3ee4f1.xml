@@ -25,7 +25,7 @@
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-17 18:29:57</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>906b68df6f8fa200ad6cd4a21c3ee4f1</sys_id>
         <sys_mod_count>5</sys_mod_count>

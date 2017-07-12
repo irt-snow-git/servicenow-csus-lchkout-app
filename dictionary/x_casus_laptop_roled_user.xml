@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Roled User" max_length="40" name="x_casus_laptop_roled_user" type="collection">
+        <element choice="1" label="Role" mandatory="true" max_length="40" name="role" type="string">
+            <choice>
+                <element label="AIRC Center" value="x_casus_laptop.airc_center"/>
+                <element label="AIRC Manager" value="x_casus_laptop.airc_manager"/>
+                <element label="ASI Center" value="x_casus_laptop.asi_center"/>
+                <element label="ASI Manager" value="x_casus_laptop.asi_manager"/>
+                <element label="Center Manager" value="x_casus_laptop.center_manager"/>
+                <element label="Financial" value="x_casus_laptop.financial"/>
+                <element label="Library Center" value="x_casus_laptop.library_center"/>
+                <element label="Library Manager" value="x_casus_laptop.library_manager"/>
+                <element label="Student Assistant" value="x_casus_laptop.student_assistant"/>
+                <element label="User" value="x_casus_laptop.user"/>
+            </choice>
+        </element>
+        <element attributes="ref_auto_completer=AJAXTableCompleter,ref_ac_columns=employee_number,ref_ac_columns_search=true" label="Technician" mandatory="true" max_length="32" name="technician" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <index name="index">
+            <element name="technician"/>
+        </index>
+    </element>
+</database>

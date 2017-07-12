@@ -6,7 +6,7 @@
         <assessment/>
         <content_page/>
         <device_type/>
-        <filter table="x_casus_laptop_checkout_table">center=8e100fc46fcf6200ad6cd4a21c3ee41e^EQ<item display_table="x_casus_laptop_depot" display_value="ASI" endquery="false" field="center" goto="false" newquery="false" operator="=" or="false" value="8e100fc46fcf6200ad6cd4a21c3ee41e"/>
+        <filter table="x_casus_laptop_checkout_table">active=true^EQ<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </filter>
         <hint/>
@@ -19,7 +19,7 @@
         <name>x_casus_laptop_checkout_table</name>
         <order>2200</order>
         <override_menu_roles>false</override_menu_roles>
-        <query/>
+        <query>&amp;sysparm_fixed_query=center=8e100fc46fcf6200ad6cd4a21c3ee41e</query>
         <report/>
         <roles>ASI Center,Laptop Checkout Admin,Student Assistant,x_casus_laptop.user,ASI Admin</roles>
         <survey/>
@@ -27,10 +27,10 @@
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-17 19:20:54</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>12b674d36fcfa200ad6cd4a21c3ee484</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>ASI Checkout</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -38,8 +38,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_app_module_12b674d36fcfa200ad6cd4a21c3ee484</sys_update_name>
-        <sys_updated_by>msn73</sys_updated_by>
-        <sys_updated_on>2016-11-17 21:55:39</sys_updated_on>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2017-04-12 20:29:40</sys_updated_on>
         <timeline_page/>
         <title>ASI Checkout</title>
         <u_basic_module/>

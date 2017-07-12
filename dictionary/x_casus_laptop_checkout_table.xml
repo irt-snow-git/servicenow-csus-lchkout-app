@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element label="Laptop Checkout Table" max_length="40" name="x_casus_laptop_checkout_table" type="collection">
-        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
-        <element label="Center" mandatory="true" max_length="32" name="center" read_only="true" reference="x_casus_laptop_depot" type="reference"/>
-        <element default="javascript:gs.nowDateTime()" dynamic_default_value="79cb83a85f220100a9ad2572f2b4773c" label="Checkout Time" max_length="40" name="checkout_time" type="glide_date_time" use_dynamic_default="true"/>
+    <element audit="true" label="Checkout Tickets" max_length="40" name="x_casus_laptop_checkout_table" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" read_only="true" type="boolean"/>
+        <element label="Center" max_length="32" name="center" read_only="true" reference="x_casus_laptop_depot" type="reference"/>
+        <element default="javascript:gs.nowDateTime()" dynamic_default_value="79cb83a85f220100a9ad2572f2b4773c" label="Checkout Time" max_length="40" name="checkout_time" read_only="true" type="glide_date_time" use_dynamic_default="true"/>
         <element attributes="ref_auto_completer=AJAXTableCompleter,ref_ac_columns=barcode,ref_ac_columns_search=true" label="Device" mandatory="true" max_length="40" name="device_name" reference="x_casus_laptop_devices_table" type="reference" use_dependent_field="true"/>
-        <element label="Notes" max_length="40" name="notes" type="string"/>
+        <element label="Notes" max_length="200" name="notes" type="journal"/>
         <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
         <element default="0" label="Renewal Count" max_length="40" name="renewal_count" read_only="true" type="decimal"/>
         <element label="Return Time" max_length="40" name="return_time" type="glide_date_time"/>
@@ -18,7 +18,7 @@
                 <element label="Closed Incomplete" sequence="4" value="Closed Incomplete"/>
             </choice>
         </element>
-        <element attributes="ref_auto_completer=AJAXTableCompleter,ref_ac_columns=employee_number,ref_ac_columns_search=true" label="Student" mandatory="true" max_length="40" name="student_name" reference="sys_user" type="reference"/>
+        <element attributes="ref_auto_completer=AJAXTableCompleter,ref_ac_columns=employee_number,ref_ac_columns_search=true" label="Student" mandatory="true" max_length="40" name="student_name" reference="sys_user" reference_qual="active=true^u_faculty=true^ORu_staff=true^ORu_student=true^EQ" reference_qual_condition="active=true^u_faculty=true^ORu_staff=true^ORu_student=true^EQ" type="reference"/>
         <index name="index">
             <element name="center"/>
         </index>
