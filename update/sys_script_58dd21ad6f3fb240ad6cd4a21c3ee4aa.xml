@@ -70,15 +70,15 @@
 	dpt.query();
 	dpt.next();
 	
-	var chkrl = new GlideRecord('x_casus_laptop_roled_user');
+	/*var chkrl = new GlideRecord('x_casus_laptop_roled_user');
 	chkrl.addQuery('technician', current.getValue('user'));
 	chkrl.addQuery('role', position);
 	chkrl.addQuery('depot', dpt);
-	chkrl.query();
+	chkrl.query();*/
 	
-	gs.addInfoMessage(roleName + " " + dpt.getDisplayValue() + " " + position);
+	//gs.addInfoMessage(roleName + " " + dpt.getDisplayValue() + " " + position);
 	
-	if(!chkrl.next()) {
+	//if(!chkrl.next()) {
 		gs.addInfoMessage("no existing record");
 		chkrl.initialize();
 		chkrl.role = position;
@@ -86,7 +86,7 @@
 		chkrl.technician = current.getValue('user');
 		chkrl.setWorkflow(false); //we know these are being inserted, so don't run the other onInsert business rules for this table
 		chkrl.insert();
-	}
+	//}
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
@@ -94,7 +94,7 @@
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>58dd21ad6f3fb240ad6cd4a21c3ee4aa</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>25</sys_mod_count>
         <sys_name>Back-Create Laptop Checkout Role Record</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -103,7 +103,7 @@
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_58dd21ad6f3fb240ad6cd4a21c3ee4aa</sys_update_name>
         <sys_updated_by>nicholasmyers</sys_updated_by>
-        <sys_updated_on>2017-07-27 20:22:41</sys_updated_on>
+        <sys_updated_on>2017-07-27 22:44:58</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>
