@@ -21,7 +21,7 @@
         <override_menu_roles>true</override_menu_roles>
         <query/>
         <report/>
-        <roles>x_casus_laptop.user,Laptop Checkout Admin</roles>
+        <roles>Laptop Checkout Admin</roles>
         <survey/>
         <survey_overwrite>true</survey_overwrite>
         <sys_class_name>sys_app_module</sys_class_name>

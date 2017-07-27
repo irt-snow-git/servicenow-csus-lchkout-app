@@ -5,7 +5,7 @@
         <active>true</active>
         <api_name>x_casus_laptop.ReturnUtils</api_name>
         <client_callable>false</client_callable>
-        <description/>
+        <description>This Script Include consolidates code used in the Return UI Action and the Check For Late Devices Scheduled Script Execution. This allows us to make future modifications in a single area.</description>
         <name>ReturnUtils</name>
         <script><![CDATA[var ReturnUtils = Class.create();
 ReturnUtils.prototype = {
@@ -14,6 +14,11 @@ ReturnUtils.prototype = {
 		
 	},
 	
+	/*
+	* Since time comparisons do not take the time zone into account, this function gets the current time in
+	* server's time zone and converts the Return Time to the server's time zone before using the 
+	* GlideDateTime compareTo() method.
+	*/
 	isLate: function(gr) {
 		var nowTime = new GlideDateTime();
 		var graceLimit = new GlideDateTime(gr.return_time);
@@ -24,6 +29,10 @@ ReturnUtils.prototype = {
 		return nowTime.compareTo(graceLimit);
     },
 	
+	/*
+	* This function queries the hold table to update any hold associated with the current record so that
+	* multiple holds are not created if all that was needed was a change to the description of the hold.
+	*/
 	assignHoldAndInvoice: function(gr, description){
 		var hold = new GlideRecord('x_casus_laptop_hold');
 		hold.addActiveQuery();
@@ -52,6 +61,10 @@ ReturnUtils.prototype = {
 		}
 	},
 	
+	/*
+	* A quick function for creating holds that can be easily changed if more fields have to be added
+	* in the future.
+	*/
 	createHold: function(gr, description){
 		var new_hold = new GlideRecord('x_casus_laptop_hold');
 		new_hold.initialize();
@@ -61,6 +74,10 @@ ReturnUtils.prototype = {
 		return new_hold.insert();
 	},
 	
+	/*
+	* A quick function for creating invoices that can be easily changed if more fields have to be added
+	* in the future.
+	*/
 	createInvoice: function(gr, holdID, description){
 		var new_invoice = new GlideRecord('x_casus_laptop_invoice');
 		new_invoice.initialize();
@@ -76,9 +93,9 @@ ReturnUtils.prototype = {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>hedge</sys_created_by>
         <sys_created_on>2017-06-19 19:15:04</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>2962b2006f27fa00ad6cd4a21c3ee409</sys_id>
-        <sys_mod_count>21</sys_mod_count>
+        <sys_mod_count>22</sys_mod_count>
         <sys_name>ReturnUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
@@ -86,6 +103,6 @@ ReturnUtils.prototype = {
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_2962b2006f27fa00ad6cd4a21c3ee409</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-06-21 20:54:33</sys_updated_on>
+        <sys_updated_on>2017-07-25 22:25:34</sys_updated_on>
     </sys_script_include>
 </record_update>

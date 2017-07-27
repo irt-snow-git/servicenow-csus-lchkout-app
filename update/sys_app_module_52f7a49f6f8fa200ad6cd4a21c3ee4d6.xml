@@ -19,7 +19,7 @@
         <override_menu_roles>false</override_menu_roles>
         <query>&amp;sysparm_fixed_query=depot=8e100fc46fcf6200ad6cd4a21c3ee41e</query>
         <report/>
-        <roles>Student Assistant,x_casus_laptop.user,ASI Admin,ASI Center</roles>
+        <roles>Student Assistant,ASI Admin,ASI Center</roles>
         <survey/>
         <survey_overwrite>true</survey_overwrite>
         <sys_class_name>sys_app_module</sys_class_name>

@@ -36,23 +36,37 @@
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
 
-	//BR runs on the Roled User table within the laptop checkout app, and allows scoped 'admins' to provision users with roles specific to the application without requiring sys admin intervention/access, allowing scoped governance.
+	//BR runs on the Laptop Checkout Users table within the laptop checkout app, and allows scoped 'admins' to provision users with roles specific to the application without requiring sys admin intervention/access, allowing scoped governance.
+	
+	//construct the role based on the depot and level submitted by the admin
+	var scope = 'x_casus_laptop.'; //the prefix of all of the roles contained within the app
+	var depot = "";
+	var roleName = scope;
+	
+	if(current.depot != '') { 
+		depot = current.depot.depot.toLowerCase();
+		roleName += depot + "_" + current.role;
+	} else {
+		roleName += current.role;
+	}
 	
 	//pull the sys_id of the role using its name
 	var roleRef = new GlideRecord('sys_user_role');
-	roleRef.addQuery('name', current.role);
+	roleRef.addQuery('name', roleName);
 	roleRef.query();
-	roleRef.next();
 	
-	var usr = new GlideRecord('sys_user_has_role');
-	usr.addQuery('user', current.technician);
-	usr.addQuery('role', roleRef.sys_id);
-	usr.query();
-	
-	if(usr.next()) {
+	if(roleRef.next()) {
 		
-		usr.deleteRecord();
-		gs.addInfoMessage(current.role.getDisplayValue() + " role removed from " + current.technician.getDisplayValue() + "'s profile.");		
+		var usr = new GlideRecord('sys_user_has_role');
+		usr.addQuery('user', current.technician);
+		usr.addQuery('role', roleRef.sys_id);
+		usr.query();
+	
+		if(usr.next()) {
+		
+			usr.deleteRecord();
+			gs.addInfoMessage(current.depot.getDisplayValue() + " " + current.role.getDisplayValue() + " role removed from " + current.technician.getDisplayValue() + "'s profile.");		
+		}
 	}
 
 })(current, previous);]]></script>
@@ -62,7 +76,7 @@
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>1128e9e96f3fb240ad6cd4a21c3ee441</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>Deprovision Laptop Technician with Role</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -71,7 +85,7 @@
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_1128e9e96f3fb240ad6cd4a21c3ee441</sys_update_name>
         <sys_updated_by>nicholasmyers</sys_updated_by>
-        <sys_updated_on>2017-07-06 17:24:20</sys_updated_on>
+        <sys_updated_on>2017-07-27 19:32:37</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>

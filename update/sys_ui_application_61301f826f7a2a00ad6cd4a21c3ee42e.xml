@@ -5,7 +5,7 @@
         <hint/>
         <name>Laptop Checkout</name>
         <order/>
-        <roles>x_casus_laptop.user</roles>
+        <roles/>
         <sys_class_name>sys_ui_application</sys_class_name>
         <sys_created_by>longlim</sys_created_by>
         <sys_created_on>2016-11-01 23:01:44</sys_created_on>

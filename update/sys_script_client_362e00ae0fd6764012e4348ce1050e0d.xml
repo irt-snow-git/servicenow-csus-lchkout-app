@@ -44,17 +44,28 @@ function onResponse(response){
 			setTimeout(g_form.getElement('sys_display.x_casus_laptop_checkout_table.device_name').focus(),0);
 		}
 	}else{
-		g_form.setValue('student_name', '');
 		g_form.showErrorBox('student_name','Customer is not a student!');
+		
+		var facultyTag = response.responseXML.getElementsByTagName("facultyTag");
+		var isFaculty = facultyTag[0].getAttribute("isFaculty");
+		
+		var staffTag = response.responseXML.getElementsByTagName("staffTag");
+		var isStaff = staffTag[0].getAttribute("isStaff");
+		
+		if(isFaculty == "true" || isStaff == "true"){
+			g_form.showErrorBox('student_name','Customer is faculty/staff.');
+		}else{
+			g_form.setValue('student_name', '');
+		}	
 	}
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>hedge</sys_created_by>
         <sys_created_on>2017-04-25 21:54:11</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>362e00ae0fd6764012e4348ce1050e0d</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>Check Student</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -63,7 +74,7 @@ function onResponse(response){
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_client_362e00ae0fd6764012e4348ce1050e0d</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-06-13 17:27:59</sys_updated_on>
+        <sys_updated_on>2017-07-25 22:47:11</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <type>onChange</type>
         <ui_type>10</ui_type>

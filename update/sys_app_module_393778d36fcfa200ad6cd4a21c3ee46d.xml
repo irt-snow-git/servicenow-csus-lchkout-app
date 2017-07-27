@@ -21,7 +21,7 @@
         <override_menu_roles>false</override_menu_roles>
         <query>&amp;sysparm_fixed_query=center=4f00cbc46fcf6200ad6cd4a21c3ee4bb</query>
         <report/>
-        <roles>Laptop Checkout Admin,Student Assistant,Library Center,x_casus_laptop.user,Library Admin</roles>
+        <roles>Laptop Checkout Admin,Student Assistant,Library Center,Library Admin</roles>
         <survey/>
         <survey_overwrite>true</survey_overwrite>
         <sys_class_name>sys_app_module</sys_class_name>

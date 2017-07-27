@@ -8,7 +8,7 @@
         <order/>
         <path/>
         <path_relative_to_root>false</path_relative_to_root>
-        <roles>x_casus_laptop.user</roles>
+        <roles/>
         <sys_class_name>sys_ui_module</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-08 03:06:37</sys_created_on>
