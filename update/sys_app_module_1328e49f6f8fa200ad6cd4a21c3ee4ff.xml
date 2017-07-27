@@ -19,16 +19,16 @@
         <override_menu_roles>false</override_menu_roles>
         <query>&amp;sysparm_fixed_query=depot=4f00cbc46fcf6200ad6cd4a21c3ee4bb</query>
         <report/>
-        <roles>Student Assistant,Library Admin,Library Center</roles>
+        <roles>x_casus_laptop.library_manager,x_casus_laptop.library_student_assistant,x_casus_laptop.admin</roles>
         <survey/>
         <survey_overwrite>true</survey_overwrite>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-17 18:16:39</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>1328e49f6f8fa200ad6cd4a21c3ee4ff</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Library Devices</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -36,8 +36,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_app_module_1328e49f6f8fa200ad6cd4a21c3ee4ff</sys_update_name>
-        <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-04-12 20:32:58</sys_updated_on>
+        <sys_updated_by>coletonbuehler</sys_updated_by>
+        <sys_updated_on>2017-07-27 21:42:16</sys_updated_on>
         <timeline_page/>
         <title>Library Devices</title>
         <u_basic_module/>

@@ -19,16 +19,16 @@
         <override_menu_roles>false</override_menu_roles>
         <query/>
         <report/>
-        <roles>Laptop Checkout Admin,ASI Center,ASI Admin</roles>
+        <roles>x_casus_laptop.asi_manager,x_casus_laptop.asi_student_assistant,x_casus_laptop.admin</roles>
         <survey/>
         <survey_overwrite>true</survey_overwrite>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-17 18:29:29</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>ce4b68df6f8fa200ad6cd4a21c3ee42f</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_name>ASI</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -36,8 +36,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_app_module_ce4b68df6f8fa200ad6cd4a21c3ee42f</sys_update_name>
-        <sys_updated_by>msn73</sys_updated_by>
-        <sys_updated_on>2016-11-17 21:55:26</sys_updated_on>
+        <sys_updated_by>coletonbuehler</sys_updated_by>
+        <sys_updated_on>2017-07-27 21:45:44</sys_updated_on>
         <timeline_page/>
         <title>ASI</title>
         <u_basic_module/>
