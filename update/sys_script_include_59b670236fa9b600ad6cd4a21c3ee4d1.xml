@@ -18,10 +18,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		checkoutTime.addSeconds(device.device_type.default_time.dateNumericValue() / 1000);
 		
 		//check for valid return time here
-		var sched = new GlideSchedule('0b7986d40f58cb4012e4348ce1050e0f', 'US/Pacific');
-		if(!sched.isInSchedule(checkoutTime)){
-			gs.addErrorMessage('Return Time is outside schedule.');
-		}
+		this._isInSchedule(checkoutTime);
 		
 		//Put Return Time, Depot, and Available variables into XML
 		var returnTag = this.newItem("returnTag");
@@ -36,6 +33,20 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		}else{
 			availTag.setAttribute("available", "false");
 		}
+	},
+	
+	_isInSchedule: function(dateTime){
+		var sched = new GlideSchedule('0b7986d40f58cb4012e4348ce1050e0f');
+		var inSchedule = sched.isInSchedule(dateTime);
+		if(!inSchedule){
+			gs.addErrorMessage('Return Time is outside schedule. ' + dateTime + ' is ' + inSchedule);
+		}
+		return inSchedule;
+	},
+	
+	checkWithSchedule: function(){
+		var dateTime = new GlideDateTime(this.getParameter('sysparm_dateTime'));
+		this._isInSchedule(checkoutTime);
 	},
 	
 	//Verifies that the User is a student and has no holds
@@ -85,7 +96,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_created_on>2017-03-22 21:08:10</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>59b670236fa9b600ad6cd4a21c3ee4d1</sys_id>
-        <sys_mod_count>54</sys_mod_count>
+        <sys_mod_count>59</sys_mod_count>
         <sys_name>CheckoutFormUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
@@ -93,6 +104,6 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_59b670236fa9b600ad6cd4a21c3ee4d1</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-07-27 22:22:01</sys_updated_on>
+        <sys_updated_on>2017-08-01 17:25:10</sys_updated_on>
     </sys_script_include>
 </record_update>
