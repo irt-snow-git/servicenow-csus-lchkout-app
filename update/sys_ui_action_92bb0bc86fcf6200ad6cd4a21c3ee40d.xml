@@ -26,11 +26,15 @@
 	gs.hasRole('x_casus_laptop.asi_manager') || 
 	gs.hasRole('x_casus_laptop.library_manager');
 
-if( isManager || current.renewal_count < current.device_name.device_type.max_renewal){
+var isUnderRenewalLimit = current.renewal_count < current.device_name.device_type.max_renewal;
+
+if (isManager || isUnderRenewalLimit){
 	var now = new GlideDateTime();
 	var return_time = new GlideDateTime(current.return_time);
 	
-	if(now.compareTo(return_time) == -1){
+	var isBeforeReturnTime = now.compareTo(return_time) == -1;
+	
+	if (isManager || isBeforeReturnTime){
 		var i = current.renewal_count;
 		i += 1;
 		current.renewal_count = i;
@@ -63,7 +67,7 @@ if( isManager || current.renewal_count < current.device_name.device_type.max_ren
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_id>
-        <sys_mod_count>87</sys_mod_count>
+        <sys_mod_count>90</sys_mod_count>
         <sys_name>Renew</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -72,7 +76,7 @@ if( isManager || current.renewal_count < current.device_name.device_type.max_ren
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_update_name>
         <sys_updated_by>gg622</sys_updated_by>
-        <sys_updated_on>2017-08-02 19:46:39</sys_updated_on>
+        <sys_updated_on>2017-08-02 21:09:34</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
