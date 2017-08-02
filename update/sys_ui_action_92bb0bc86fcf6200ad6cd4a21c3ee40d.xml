@@ -21,7 +21,12 @@
         <name>Renew</name>
         <onclick>runClientCode()</onclick>
         <order>100</order>
-        <script><![CDATA[if(current.renewal_count < current.device_name.device_type.max_renewal){
+        <script><![CDATA[var isManager = gs.hasRole('x_casus_laptop.admin') || 
+	gs.hasRole('x_casus_laptop.airc_manager') || 
+	gs.hasRole('x_casus_laptop.asi_manager') || 
+	gs.hasRole('x_casus_laptop.library_manager');
+
+if( isManager || current.renewal_count < current.device_name.device_type.max_renewal){
 	var now = new GlideDateTime();
 	var return_time = new GlideDateTime(current.return_time);
 	
@@ -55,10 +60,10 @@
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-08 03:50:33</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_id>
-        <sys_mod_count>80</sys_mod_count>
+        <sys_mod_count>87</sys_mod_count>
         <sys_name>Renew</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -66,8 +71,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_update_name>
-        <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-06-14 18:37:10</sys_updated_on>
+        <sys_updated_by>gg622</sys_updated_by>
+        <sys_updated_on>2017-08-02 19:46:39</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

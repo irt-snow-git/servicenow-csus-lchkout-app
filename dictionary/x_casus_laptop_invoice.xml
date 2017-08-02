@@ -10,7 +10,7 @@
             <choice>
                 <element label="Pending Payment" sequence="0" value="1"/>
                 <element label="Struck" sequence="1" value="2"/>
-                <element label="Payed" sequence="2" value="3"/>
+                <element label="Paid" sequence="2" value="3"/>
             </choice>
         </element>
         <index name="index">
