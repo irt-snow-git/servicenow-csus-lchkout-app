@@ -4,7 +4,10 @@
         <action_name>Confirm</action_name>
         <active>true</active>
         <client>false</client>
-        <comments>Moves the Checkout Ticket from the "Confriming" state to the "Checked Out" state if certain conditions are met. Currently, this UI Action only checks if the Device is in the "Available" state before proceeding with the action.</comments>
+        <comments>Moves the Checkout Ticket from the "Confriming" state to the "Checked Out" state if certain conditions are met. &#13;
+Checks two conditions: &#13;
+ 1) if the Device is in the "Available" state &#13;
+ 2) if the customer has mutiple devices of the same type checked out (overidden by Manager roles)</comments>
         <condition>current.state=='Confirming'</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
@@ -21,22 +24,61 @@
         <name>Confirm</name>
         <onclick>runclientcode()</onclick>
         <order>100</order>
-        <script><![CDATA[if (current.device_name.state == 3){
-	//Find Device from Ticket and change availability
-	var device = new GlideRecord('x_casus_laptop_devices_table');
-	device.get(current.device_name);
-	device.state = 2;
-	device.update();
+        <script><![CDATA[var hasMultipleDevices = checkForMultipleDevices(current.student_name);
+
+var isManager = gs.hasRole('x_casus_laptop.admin') || 
+	gs.hasRole('x_casus_laptop.airc_manager') || 
+	gs.hasRole('x_casus_laptop.asi_manager') || 
+	gs.hasRole('x_casus_laptop.library_manager');
+
+if (hasMultipleDevices) {
+	gs.addErrorMessage("Student already has the same device type checked out");
+	if (isManager) checkoutDevice();
+} else {
+	checkoutDevice();
+}
+
+
+function checkoutDevice() {
+    if (current.device_name.state == 3) {
+        //Find Device from Ticket and change availability
+        var device = new GlideRecord('x_casus_laptop_devices_table');
+        device.get(current.device_name);
+        device.state = 2;
+        device.update();
+
+        //Change ticket state and remind operator of Return Time
+        current.state = 'Checked Out';
+        current.update();
+        gs.addInfoMessage(current.device_name.device_id + " return time: " + current.return_time.getDisplayValue());
+    } else {
+        gs.addErrorMessage("Device is currently unavailable.");
+        action.setRedirectURL(current);
+    }
+
+}
+/*_________________________________________________________________
+   * Description: Checks if the customer has multiple devices of the same type
+   * Parameters: user id of customer
+   * Returns: (boolean) True - Yes, they already have a same type device checked out
+   ________________________________________________________________*/
+function checkForMultipleDevices(student_sys_id) {
+	var checkoutRecord = new GlideRecord('x_casus_laptop_checkout_table');
+	checkoutRecord.addQuery('state', 'Checked Out');
+	checkoutRecord.addQuery('student_name', student_sys_id);
+	checkoutRecord.query();
 	
-	//gs.addErrorMessage(device.device_id + ": " + device.state);
+	if (checkoutRecord.next()) {
+		var otherRecordType = checkoutRecord.device_name.device_type.device_type;
+		var currentType = current.device_name.device_type.getDisplayValue();
+		gs.addInfoMessage(otherRecordType + " =? " + currentType);
+		//Compare strings
+		if (otherRecordType === currentType) {
+			return true;
+		}
+	}
+	return false;
 	
-	//Change ticket state and remind operator of Return Time
-	current.state='Checked Out';
-	current.update();
-	gs.addInfoMessage(current.device_name.device_id + " return time: " + current.return_time.getDisplayValue());
-}else{
-	gs.addErrorMessage("Device is currently unavailable.");
-	action.setRedirectURL(current);
 }]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
@@ -45,10 +87,10 @@
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-08 03:49:48</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>c59b87c86fcf6200ad6cd4a21c3ee4e6</sys_id>
-        <sys_mod_count>43</sys_mod_count>
+        <sys_mod_count>62</sys_mod_count>
         <sys_name>Confirm</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -56,8 +98,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_c59b87c86fcf6200ad6cd4a21c3ee4e6</sys_update_name>
-        <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-06-14 17:54:02</sys_updated_on>
+        <sys_updated_by>gg622</sys_updated_by>
+        <sys_updated_on>2017-08-03 21:28:20</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

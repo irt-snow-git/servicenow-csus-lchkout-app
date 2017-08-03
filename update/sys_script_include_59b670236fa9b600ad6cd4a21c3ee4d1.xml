@@ -12,10 +12,8 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 	
 	//Verifies that the device is available, creates a default return time, and returns the device's associated depot
 	getDeviceFormInfo: function(){
-		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_chkTime'));
 		var device = new GlideRecord('x_casus_laptop_devices_table');
 		device.get(this.getParameter('sysparm_device'));
-		checkoutTime.addSeconds(device.device_type.default_time.dateNumericValue() / 1000);
 		
 		var availTag = this.newItem("availTag");
 		if(device.state == 3){
@@ -25,35 +23,43 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 			return;
 		}
 		
-		//check for valid return time here
-		this._isInSchedule(checkoutTime);
-		
-		//Put Return Time, Depot, and Available variables into XML
-		var returnTag = this.newItem("returnTag");
-		returnTag.setAttribute("returnTime", checkoutTime);
-		
 		var depotTag = this.newItem("depotTag");
 		depotTag.setAttribute("depot", device.depot);
 		
+		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_chkTime'));
+		var returnTime = new GlideDateTime(checkoutTime);
 		
+		returnTime.addSeconds(device.device_type.default_time.dateNumericValue() / 1000);
+		
+		//check for valid return time here
+		this._isInSchedule(returnTime);
+		
+		//Put Return Time, Depot, and Available variables into XML
+		var returnTag = this.newItem("returnTag");
+		returnTag.setAttribute("returnTime", returnTime);
 	},
 	
-	_isInSchedule: function(dateTime){
-		var serverDateTime = new GlideDateTime(dateTime);
+	_isInSchedule: function(returnTime){
+		var serverDateTime = new GlideDateTime(returnTime);
+		
+		serverDateTime.add(-returnTime.getTZOffset());
 		
 		var sched = new GlideSchedule('0b7986d40f58cb4012e4348ce1050e0f');
 		var inSchedule = sched.isInSchedule(serverDateTime);
 		if(!inSchedule){
-			gs.addErrorMessage('Return Time is outside schedule. ' + serverDateTime + ' is ' + inSchedule);
+			/*gs.addErrorMessage('Server: ' + serverDateTime + 
+							' / Client: ' + returnTime + ' / Offset: ' + returnTime.getTZOffset());*/
+			gs.addErrorMessage("Return Time is outside schedule.");			
 		}
 		return inSchedule;
 	},
 	
 	checkWithSchedule: function(){
-		var dateTime = new GlideDateTime(this.getParameter('sysparm_dateTime'));
+		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_checkoutTime'));
+		var returnTime = new GlideDateTime(this.getParameter('sysparm_returnTime'));
 		
 		var dateTimeTag = this.newItem("dateTimeTag");
-		dateTimeTag.setAttribute("dateTime", this._isInSchedule(dateTime));
+		dateTimeTag.setAttribute("dateTime", this._isInSchedule(returnTime));
 	},
 	
 	//Verifies that the User is a student and has no holds
@@ -103,7 +109,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_created_on>2017-03-22 21:08:10</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>59b670236fa9b600ad6cd4a21c3ee4d1</sys_id>
-        <sys_mod_count>68</sys_mod_count>
+        <sys_mod_count>95</sys_mod_count>
         <sys_name>CheckoutFormUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
@@ -111,6 +117,6 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_59b670236fa9b600ad6cd4a21c3ee4d1</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-02 21:21:33</sys_updated_on>
+        <sys_updated_on>2017-08-03 21:37:28</sys_updated_on>
     </sys_script_include>
 </record_update>
