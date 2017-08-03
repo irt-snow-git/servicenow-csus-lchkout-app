@@ -176,41 +176,40 @@
 	
 	//generate the invoice dat file to send to the bursar's office
 	function generateLaptopInvoiceDatFile() {
-		gs.addInfoMessage("Generating Dat File");
 		var datFile = new GlideRecord('ecc_queue');
 		datFile.initialize();
 		datFile.agent = 'AttachmentCreator';
 		datFile.topic = 'CheckoutInvoiceDatFileCreator';
 
 		// name and filetype creation, invoice name resemble CHKINV0000001
-		datFile.name = + "CHK" + current.number + '.dat:application/otctet-stream';
+		datFile.name = "CHK" + current.number + '.dat';
 
 		datFile.source = current.getTableName() + ':' + current.sys_id;
 
 		//file content is structured: Campus_ID[9] fee_Amt[7] Item_Type[12] Reference_Number[6] Due_Date[8] Effective_Date[8] Term[4]
 		//fee display value is 4 digits before the decimal, two after. Concatenate to display properly
-		var formattedFee = current.fee.getValue();
+		/*var formattedFee = 450; //current.fee.getValue();
 		if(formattedFee < 10) 
 			formattedFee = "000" + formattedFee;
 		else if(formattedFee < 100)
 			formattedFee = "00" + formattedFee;
 		else if(formattedFee < 1000)
-			formattedFee = "0" + formattedFee;
+			formattedFee = "0" + formattedFee;*/
+		var formattedFee = "0001000";
 		
 		//remove characters from the invoice number, and achieve 6 chars
 		var formattedInvNum = current.number.replace("INV0", '');
 		
 		//currently no defined due date exists, so set to the current date, as they've had the laptop too long
-		/*var dueDate;
-		var formattedDueDate;*/
+		//var dueDate;
+		//var formattedDueDate;
 		
 		var billingDate = current.sys_created_on.getDate();
 		var formattedBillingDate = billingDate.getMonthLocalTime() + billingDate.getDayLocalTime() + billingDate.getYearLocalTime();
 		
 		var formattedTerm = "1234"; //just gibberish for now, not sure how to define term.
 		
-		datFile.payload = current.hold.checkout_ticket.student_name.employee_number + " " + formattedFee + "000000000000" + formattedInvNum
-			+ formattedBillingDate + formattedBillingDate + formattedTerm;
+		datFile.payload = current.hold.checkout_ticket.student_name.employee_number + " " + formattedFee + "000000000000" + formattedInvNum + formattedBillingDate + formattedBillingDate + formattedTerm;
 		
 		datFile.insert();
 		gs.addInfoMessage("Inserted to ecc_queue");
@@ -221,8 +220,6 @@
 
 	//attach this dat file to the record
 	function attachDatFileToRecord(file) {
-		gs.addInfoMessage("Attaching Dat File");
-
 		var dAttachment = new GlideRecord('sys_attachment');
 		dAttachment.initialize();
 		dAttachment.table_name = current.getTableName();
@@ -255,7 +252,7 @@
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>255d332c0fd00f4012e4348ce1050eb6</sys_id>
-        <sys_mod_count>16</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>Generate DAT Invoice File</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -263,8 +260,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_255d332c0fd00f4012e4348ce1050eb6</sys_update_name>
-        <sys_updated_by>gg622</sys_updated_by>
-        <sys_updated_on>2017-08-02 22:07:34</sys_updated_on>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-08-03 22:42:20</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

@@ -32,9 +32,14 @@ var isManager = gs.hasRole('x_casus_laptop.admin') ||
 	gs.hasRole('x_casus_laptop.library_manager');
 
 if (hasMultipleDevices) {
-	gs.addErrorMessage("Student already has the same device type checked out");
-	if (isManager) checkoutDevice();
-} else {
+	if (isManager) {
+		gs.addErrorMessage("Student already has the same device type checked out");
+		checkoutDevice();
+	} else {
+		gs.addErrorMessage("Checkout Denied: Student already has the same device type checked out");
+		action.setRedirectURL(current);
+	}
+} else { //No checkout conflicts, proceed to checkout the item
 	checkoutDevice();
 }
 
@@ -63,23 +68,24 @@ function checkoutDevice() {
    * Returns: (boolean) True - Yes, they already have a same type device checked out
    ________________________________________________________________*/
 function checkForMultipleDevices(student_sys_id) {
+	// Find other checkout records for the student
 	var checkoutRecord = new GlideRecord('x_casus_laptop_checkout_table');
 	checkoutRecord.addQuery('state', 'Checked Out');
 	checkoutRecord.addQuery('student_name', student_sys_id);
 	checkoutRecord.query();
-	
-	if (checkoutRecord.next()) {
+	// Check each to see if the records are for the same type of device
+	while (checkoutRecord.next()) {
 		var otherRecordType = checkoutRecord.device_name.device_type.device_type;
 		var currentType = current.device_name.device_type.getDisplayValue();
-		gs.addInfoMessage(otherRecordType + " =? " + currentType);
-		//Compare strings
-		if (otherRecordType === currentType) {
-			return true;
+		
+		if (otherRecordType.toString() === currentType.toString()) {
+			gs.addInfoMessage(checkoutRecord.number);
+			return true; // Found a match, stop searching
 		}
 	}
 	return false;
-	
-}]]></script>
+}
+]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -90,7 +96,7 @@ function checkForMultipleDevices(student_sys_id) {
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>c59b87c86fcf6200ad6cd4a21c3ee4e6</sys_id>
-        <sys_mod_count>62</sys_mod_count>
+        <sys_mod_count>75</sys_mod_count>
         <sys_name>Confirm</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -99,7 +105,7 @@ function checkForMultipleDevices(student_sys_id) {
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_c59b87c86fcf6200ad6cd4a21c3ee4e6</sys_update_name>
         <sys_updated_by>gg622</sys_updated_by>
-        <sys_updated_on>2017-08-03 21:28:20</sys_updated_on>
+        <sys_updated_on>2017-08-03 22:57:52</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
