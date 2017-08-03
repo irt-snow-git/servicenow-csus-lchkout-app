@@ -37,8 +37,15 @@ function onResponse(response){
 	//Clear the student field if criteria do not match
 	if (isStudent == "true"){
 		if(hasHold == "true"){
-			g_form.setValue('student_name', '');
 			g_form.showErrorBox('student_name','Student has a hold!');
+			//Managers can still checkout, regardless of hold status
+			var managerRoles = "x_casus_laptop.airc_manager" + ", " +
+								"x_casus_laptop.asi_manager" + ", " + 
+								"x_casus_laptop.library_manager" + ", " +
+								"x_casus_laptop.admin";
+			var isManager = g_user.hasRoleFromList(managerRoles);
+			if (!isManager) g_form.setValue('student_name', '');
+			
 		}else{
 			//Alex's lazy refocus
 			setTimeout(g_form.getElement('sys_display.x_casus_laptop_checkout_table.device_name').focus(),0);
@@ -65,7 +72,7 @@ function onResponse(response){
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>362e00ae0fd6764012e4348ce1050e0d</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>19</sys_mod_count>
         <sys_name>Check Student</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -73,8 +80,8 @@ function onResponse(response){
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_client_362e00ae0fd6764012e4348ce1050e0d</sys_update_name>
-        <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-07-25 22:47:11</sys_updated_on>
+        <sys_updated_by>gg622</sys_updated_by>
+        <sys_updated_on>2017-08-03 17:59:54</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <type>onChange</type>
         <ui_type>10</ui_type>
