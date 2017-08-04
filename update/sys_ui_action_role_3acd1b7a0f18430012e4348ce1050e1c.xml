@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_action_role">
+    <sys_ui_action_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_ui_action_role</sys_class_name>
+        <sys_created_by>gg622</sys_created_by>
+        <sys_created_on>2017-08-04 17:42:00</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>3acd1b7a0f18430012e4348ce1050e1c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Renew.x_casus_laptop.library_student_assistant</sys_name>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_ui_action display_value="Renew">92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_ui_action>
+        <sys_update_name>sys_ui_action_role_3acd1b7a0f18430012e4348ce1050e1c</sys_update_name>
+        <sys_updated_by>gg622</sys_updated_by>
+        <sys_updated_on>2017-08-04 17:42:00</sys_updated_on>
+        <sys_user_role display_value="x_casus_laptop.library_student_assistant" name="x_casus_laptop.library_student_assistant">ac5cecdf6f8fa200ad6cd4a21c3ee433</sys_user_role>
+    </sys_ui_action_role>
+</record_update>
