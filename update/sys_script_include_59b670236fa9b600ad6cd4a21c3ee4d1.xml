@@ -39,6 +39,41 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		returnTag.setAttribute("returnTime", returnTime);
 	},
 	
+	//This is a test function to explore other scheduling options (currently unused)
+	_alternateIsInSchedule: function(checkoutTime, returnTime){
+		var sCheckoutTime = new GlideDateTime(checkoutTime);
+		sCheckoutTime.add(-checkoutTime.getTZOffset());
+		
+		var sched = new GlideSchedule('0b7986d40f58cb4012e4348ce1050e0f');
+		
+		if(sched.isInSchedule(sCheckoutTime)){
+			var sReturnTime = new GlideDateTime(returnTime);
+			sReturnTime.add(-returnTime.getTZOffset());
+			if(sched.isInSchedule(sReturnTime)){
+				return 1;
+			}else{
+				return 0;
+			}
+		}else{
+			return -1;
+		}
+	},
+	
+	//This is a test function to explore ohter scheduling options (currently unused)
+	alternateCheckWithSchedule: function(){
+		var device = new GlideRecord();
+		device.get(this.getParameter('sysparm_device'));
+		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_checkoutTime'));
+		var returnTime = new GlideDateTime(this.getParameter('sysparm_returnTime'));
+		
+		var defaultReturnTime = new GlideDateTime(checkoutTime);
+		deafultReturnTime.addSeconds(device.device_type.default_time.dateNumericValue() / 1000);
+		
+		var inSchedTag = this.newItem("inSchedTag");
+		dateTimeTag.setAttribute("inSched", this._isInSchedule(checkoutTime, returnTime));
+	},
+	
+	//Current scheduling function
 	_isInSchedule: function(checkoutTime, returnTime){
 		var sCheckoutTime = new GlideDateTime(checkoutTime);
 		var sReturnTime = new GlideDateTime(returnTime);
@@ -47,11 +82,11 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		sReturnTime.add(-returnTime.getTZOffset());
 		
 		var sched = new GlideSchedule('0b7986d40f58cb4012e4348ce1050e0f');
+		
 		var inSchedule = sched.isInSchedule(sReturnTime);
 		if(!inSchedule){
-			/*gs.addErrorMessage('Server: ' + serverDateTime + 
-							' / Client: ' + returnTime + ' / Offset: ' + returnTime.getTZOffset());*/
-			gs.addInfoMessage(sched.whenNext(sCheckoutTime, 'UTC'));
+			//gs.addErrorMessage('Server: ' + serverDateTime + 
+			//				' / Client: ' + returnTime + ' / Offset: ' + returnTime.getTZOffset());
 			
 			var chkoutLength = new GlideDateTime(sched.duration(sCheckoutTime, sReturnTime));
 			var chkoutLengthMS = chkoutLength.getNumericValue();
@@ -67,6 +102,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		return returnTime;
 	},
 	
+	//Current function receiving arguments from the Return Time Check Client Script
 	checkWithSchedule: function(){
 		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_checkoutTime'));
 		var returnTime = new GlideDateTime(this.getParameter('sysparm_returnTime'));
@@ -122,7 +158,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_created_on>2017-03-22 21:08:10</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>59b670236fa9b600ad6cd4a21c3ee4d1</sys_id>
-        <sys_mod_count>105</sys_mod_count>
+        <sys_mod_count>111</sys_mod_count>
         <sys_name>CheckoutFormUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
@@ -130,6 +166,6 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_59b670236fa9b600ad6cd4a21c3ee4d1</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-04 17:39:16</sys_updated_on>
+        <sys_updated_on>2017-08-04 22:27:46</sys_updated_on>
     </sys_script_include>
 </record_update>

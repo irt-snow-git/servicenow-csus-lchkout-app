@@ -62,7 +62,9 @@
 		
 		if(roleName.split("_")[2]) {
 			position += "_" + roleName.split("_")[2];
-		}
+		} 
+	} else {
+		position = roleName;
 	}
 	
 	var dpt = new GlideRecord('x_casus_laptop_depot');
@@ -94,7 +96,7 @@
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>58dd21ad6f3fb240ad6cd4a21c3ee4aa</sys_id>
-        <sys_mod_count>39</sys_mod_count>
+        <sys_mod_count>40</sys_mod_count>
         <sys_name>Back-Create Laptop Checkout Role Record</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -103,7 +105,7 @@
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_58dd21ad6f3fb240ad6cd4a21c3ee4aa</sys_update_name>
         <sys_updated_by>nicholasmyers</sys_updated_by>
-        <sys_updated_on>2017-08-04 17:52:51</sys_updated_on>
+        <sys_updated_on>2017-08-04 17:56:46</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_policy">
+    <sys_ui_policy action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <conditions table="x_casus_laptop_roled_user">role!=financial^EQ<item endquery="false" field="role" goto="false" newquery="false" operator="!=" or="false" value="financial"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </conditions>
+        <description/>
+        <global>true</global>
+        <inherit>false</inherit>
+        <model_id/>
+        <model_table/>
+        <on_load>true</on_load>
+        <order>100</order>
+        <reverse_if_false>true</reverse_if_false>
+        <run_scripts>false</run_scripts>
+        <script_false><![CDATA[function onCondition() {
+
+}]]></script_false>
+        <script_true><![CDATA[function onCondition() {
+
+}]]></script_true>
+        <set_values/>
+        <short_description>Make Depot Mandatory and Visible when not Financial</short_description>
+        <sys_class_name>sys_ui_policy</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-08-04 18:25:25</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>aa872b3e6fd84300ad6cd4a21c3ee481</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Make Depot Mandatory and Visible when not Financial</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_ui_policy_aa872b3e6fd84300ad6cd4a21c3ee481</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-08-04 18:29:18</sys_updated_on>
+        <table>x_casus_laptop_roled_user</table>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_ui_policy>
+</record_update>
