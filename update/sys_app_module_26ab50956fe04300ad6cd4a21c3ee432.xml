@@ -10,36 +10,36 @@
         <hint/>
         <homepage/>
         <image/>
-        <link_type>SEPARATOR</link_type>
+        <link_type>LIST</link_type>
         <map_page/>
-        <mobile_title>Administration</mobile_title>
+        <mobile_title>Library Devices</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
-        <name/>
-        <order>4000</order>
+        <name>x_casus_laptop_devices_table</name>
+        <order>3200</order>
         <override_menu_roles>false</override_menu_roles>
-        <query/>
+        <query>&amp;sysparm_fixed_query=depot=4f00cbc46fcf6200ad6cd4a21c3ee4bb</query>
         <report/>
-        <roles>x_casus_laptop.admin</roles>
+        <roles>x_casus_laptop.admin,x_casus_laptop.library_manager,x_casus_laptop.library_student_assistant</roles>
         <survey/>
         <survey_overwrite>true</survey_overwrite>
         <sys_class_name>sys_app_module</sys_class_name>
-        <sys_created_by>nicholasmyers</sys_created_by>
-        <sys_created_on>2017-07-06 15:46:15</sys_created_on>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2017-08-11 22:01:36</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_id>6d1d696d6f3fb240ad6cd4a21c3ee47e</sys_id>
-        <sys_mod_count>4</sys_mod_count>
-        <sys_name>Administration</sys_name>
-        <sys_overrides/>
+        <sys_id>26ab50956fe04300ad6cd4a21c3ee432</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Library Devices</sys_name>
+        <sys_overrides display_value="Library">906b68df6f8fa200ad6cd4a21c3ee4f1</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
-        <sys_update_name>sys_app_module_6d1d696d6f3fb240ad6cd4a21c3ee47e</sys_update_name>
+        <sys_update_name>sys_app_module_26ab50956fe04300ad6cd4a21c3ee432</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-11 22:48:08</sys_updated_on>
+        <sys_updated_on>2017-08-11 22:01:36</sys_updated_on>
         <timeline_page/>
-        <title>Administration</title>
+        <title>Library Devices</title>
         <u_basic_module/>
         <u_count_color/>
         <u_count_filter/>

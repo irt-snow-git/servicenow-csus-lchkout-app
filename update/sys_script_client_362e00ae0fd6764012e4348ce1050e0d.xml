@@ -76,7 +76,7 @@ function onResponse(response){
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>362e00ae0fd6764012e4348ce1050e0d</sys_id>
-        <sys_mod_count>21</sys_mod_count>
+        <sys_mod_count>25</sys_mod_count>
         <sys_name>Check Student</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -84,8 +84,8 @@ function onResponse(response){
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_client_362e00ae0fd6764012e4348ce1050e0d</sys_update_name>
-        <sys_updated_by>gg622</sys_updated_by>
-        <sys_updated_on>2017-08-03 18:12:08</sys_updated_on>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2017-08-15 18:56:48</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <type>onChange</type>
         <ui_type>10</ui_type>

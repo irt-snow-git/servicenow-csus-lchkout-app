@@ -15,33 +15,47 @@
 		return;
 	}
 	
-	//Type appropriate comment here, and begin script below
-	if(newValue){
-		if(newValue != oldValue){
-			var checkout_t = g_form.getValue('checkout_time');
-			
-			if(checkout_t == ''){
-				return;
-			}
-			
-			if(newValue < checkout_t){
-				g_form.setValue('return_time', oldValue);
-				g_form.showErrorBox('return_time', "Return Time cannot be earlier than Checkout Time.");
-			}else{
-				var ajax = new GlideAjax('CheckoutFormUtils');
-				ajax.addParam('sysparm_name','checkWithSchedule');
-				ajax.addParam('sysparm_returnTime', newValue);
-				ajax.addParam('sysparm_checkoutTime', checkout_t);
-				ajax.getXML(getDateTime);
+	if(newValue){		
+		var prevValue = g_scratchpad.oldVal || '';
+		
+		if (newValue && newValue.length){
+			if(prevValue.length === 0 || newValue.toString() !== prevValue){
+				var device = g_form.getValue('device_name');
+				var checkout_t = g_form.getValue('checkout_time');
+								
+				if(device === '' || checkout_t === ''){
+					return;
+				}
+				
+				if(newValue < checkout_t){
+					g_form.setValue('return_time', '');
+					g_form.showErrorBox('return_time', "Return Time cannot be earlier than Checkout Time.");
+				}else{
+					var ajax = new GlideAjax('CheckoutFormUtils');
+					ajax.addParam('sysparm_name','checkWithSchedule');
+					//ajax.addParam('sysparm_name','altCheckWithSchedule');
+					ajax.addParam('sysparm_returnTime', newValue);
+					ajax.addParam('sysparm_checkoutTime', checkout_t);
+					ajax.addParam('sysparm_device', device);
+					ajax.getXML(getDateTime);
+				}
+				g_scratchpad.oldVal = newValue;
 			}
 		}
 	}
 }
 
 function getDateTime(response){
-	var dateTimeTag= response.responseXML.getElementsByTagName("dateTimeTag");
-	var dateTime = dateTimeTag[0].getAttribute("dateTime");
-	g_form.showErrorBox('return_time', dateTime);
+	var inSchedTag= response.responseXML.getElementsByTagName("inSchedTag");
+	var inSched = inSchedTag[0].getAttribute("inSched");
+	g_form.setValue('return_time', inSched);
+	/*
+	if(inSched == "-1" || inSched == "0"){
+		g_form.setValue('return_time', '');
+		if(inSched == "0"){
+			g_form.showErrorBox('return_time', 'The return time is outside operating hours. Please manually select a return time.');
+		}
+	}*/
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>hedge</sys_created_by>
@@ -49,7 +63,7 @@ function getDateTime(response){
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>9dc338720f9e764012e4348ce1050e39</sys_id>
-        <sys_mod_count>17</sys_mod_count>
+        <sys_mod_count>64</sys_mod_count>
         <sys_name>Return Time Check</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -58,7 +72,7 @@ function getDateTime(response){
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_client_9dc338720f9e764012e4348ce1050e39</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-03 21:27:37</sys_updated_on>
+        <sys_updated_on>2017-08-14 18:51:52</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <type>onChange</type>
         <ui_type>10</ui_type>

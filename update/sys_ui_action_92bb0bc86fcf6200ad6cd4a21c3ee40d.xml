@@ -3,7 +3,7 @@
     <sys_ui_action action="INSERT_OR_UPDATE">
         <action_name>Renew</action_name>
         <active>true</active>
-        <client>false</client>
+        <client>true</client>
         <comments>Extends the Return Time of a Checkout Ticket based on the Default Checkout Time associated with the Device's device type.</comments>
         <condition>current.state=='Checked Out'</condition>
         <form_action>true</form_action>
@@ -19,43 +19,31 @@
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
         <name>Renew</name>
-        <onclick>runClientCode()</onclick>
+        <onclick>clientRenew()</onclick>
         <order>100</order>
-        <script><![CDATA[var isManager = gs.hasRole('x_casus_laptop.admin') || 
-	gs.hasRole('x_casus_laptop.airc_manager') || 
-	gs.hasRole('x_casus_laptop.asi_manager') || 
-	gs.hasRole('x_casus_laptop.library_manager');
+        <script><![CDATA[function clientRenew(){
+	var ajax = new GlideAjax('CheckoutFormUtils');
+	ajax.addParam('sysparm_name','renewWithSchedule');
+	ajax.addParam('sysparm_device', g_form.getValue('device_name'));
+	ajax.addParam('sysparm_checkoutTime', g_form.getValue('checkout_time'));
+	ajax.addParam('sysparm_returnTime', g_form.getValue('return_time'));
+	ajax.addParam('sysparm_renewalCount', g_form.getValue('renewal_count'));
+	ajax.getXML(continueRenew);
+}
 
-var isUnderRenewalLimit = current.renewal_count < current.device_name.device_type.max_renewal;
-
-if (isManager || isUnderRenewalLimit){
-	var now = new GlideDateTime();
-	var return_time = new GlideDateTime(current.return_time);
-	
-	var isBeforeReturnTime = now.compareTo(return_time) == -1;
-	
-	if (isManager || isBeforeReturnTime){
-		var i = current.renewal_count;
+function continueRenew(response){
+	var renewedTag= response.responseXML.getElementsByTagName("renewedTag");
+	var renewed = renewedTag[0].getAttribute("renewed");
+	if(renewed == "true"){
+		var i = parseInt(g_form.getValue('renewal_count'));
 		i += 1;
-		current.renewal_count = i;
+		g_form.setValue('renewal_count', i);
 		
-		var newReturn = new GlideDateTime(); //automatically set to current Date/Time
-		var default_time = new GlideDateTime(current.device_name.device_type.default_time);
-		
-		newReturn.add(default_time.getNumericValue());
-		current.return_time = newReturn;
-		//current.state="Confirming";
-		current.update();
-		
-		gs.addInfoMessage(current.device_name.device_type.device_type + " " + current.device_name.device_id + 
-						  " Renewed Until " + current.return_time.getDisplayValue());
-	}else{
-		gs.addErrorMessage('Renewal is not allowed past return time.');
-		action.setRedirectURL(current);
+		var returnTag= response.responseXML.getElementsByTagName("returnTag");
+		var returnTime = returnTag[0].getAttribute("returnTime");
+		g_form.setValue('return_time', returnTime);
+		g_form.submit();
 	}
-}else{
-	gs.addErrorMessage("Can not check out device again!");
-	action.setRedirectURL(current);
 }]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
@@ -67,7 +55,7 @@ if (isManager || isUnderRenewalLimit){
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_id>
-        <sys_mod_count>90</sys_mod_count>
+        <sys_mod_count>112</sys_mod_count>
         <sys_name>Renew</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -75,8 +63,8 @@ if (isManager || isUnderRenewalLimit){
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_update_name>
-        <sys_updated_by>gg622</sys_updated_by>
-        <sys_updated_on>2017-08-02 21:09:34</sys_updated_on>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2017-08-16 21:57:04</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

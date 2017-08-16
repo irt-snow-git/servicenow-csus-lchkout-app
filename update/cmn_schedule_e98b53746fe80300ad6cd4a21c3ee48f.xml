@@ -4,23 +4,23 @@
         <description/>
         <document/>
         <document_key/>
-        <name>Test</name>
+        <name>AIRC Laptop Checkout Schedule</name>
         <parent/>
         <read_only>false</read_only>
         <sys_class_name>cmn_schedule</sys_class_name>
         <sys_created_by>hedge</sys_created_by>
-        <sys_created_on>2017-07-27 17:08:48</sys_created_on>
+        <sys_created_on>2017-08-10 22:40:12</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
-        <sys_id>0b7986d40f58cb4012e4348ce1050e0f</sys_id>
-        <sys_mod_count>11</sys_mod_count>
-        <sys_name>Test</sys_name>
+        <sys_id>e98b53746fe80300ad6cd4a21c3ee48f</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>AIRC Laptop Checkout Schedule</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
-        <sys_update_name>cmn_schedule_0b7986d40f58cb4012e4348ce1050e0f</sys_update_name>
+        <sys_update_name>cmn_schedule_e98b53746fe80300ad6cd4a21c3ee48f</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-03 22:29:34</sys_updated_on>
+        <sys_updated_on>2017-08-10 22:46:14</sys_updated_on>
         <time_zone>US/Pacific</time_zone>
         <type/>
     </cmn_schedule>

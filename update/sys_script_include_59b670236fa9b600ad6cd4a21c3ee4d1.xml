@@ -31,16 +31,25 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		
 		returnTime.addSeconds(device.device_type.default_time.dateNumericValue() / 1000);
 		
-		//check for valid return time here
-		returnTime.setValue(this._isInSchedule(checkoutTime, returnTime));
-		
-		//Put Return Time, Depot, and Available variables into XML
 		var returnTag = this.newItem("returnTag");
-		returnTag.setAttribute("returnTime", returnTime);
+		
+		/*
+ 		* This code section is for the alternate scheduling method
+		
+		var inSched = this._altIsInSchedule(checkoutTime, returnTime);
+		
+		if(inSched == 1){
+			returnTag.setAttribute("returnTime", returnTime);
+		}else{
+			returnTag.setAttribute("returnTime", inSched);
+		}
+ 		*/
+		returnTag.setAttribute("returnTime", 
+							   this._isInSchedule(device.depot.schedule, checkoutTime, returnTime, false));
 	},
 	
 	//This is a test function to explore other scheduling options (currently unused)
-	_alternateIsInSchedule: function(checkoutTime, returnTime){
+	_altIsInSchedule: function(checkoutTime, returnTime){
 		var sCheckoutTime = new GlideDateTime(checkoutTime);
 		sCheckoutTime.add(-checkoutTime.getTZOffset());
 		
@@ -55,60 +64,131 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 				return 0;
 			}
 		}else{
+			gs.addErrorMessage("Checkouts are unavailable at this time.");
 			return -1;
 		}
 	},
 	
 	//This is a test function to explore ohter scheduling options (currently unused)
-	alternateCheckWithSchedule: function(){
-		var device = new GlideRecord();
-		device.get(this.getParameter('sysparm_device'));
+	altCheckWithSchedule: function(){
+		//var device = new GlideRecord();
+		//device.get(this.getParameter('sysparm_device'));
 		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_checkoutTime'));
 		var returnTime = new GlideDateTime(this.getParameter('sysparm_returnTime'));
 		
+		/*
+ 		* TODO: Finish checks for duration longer than default and clear based on technician role
+		
 		var defaultReturnTime = new GlideDateTime(checkoutTime);
 		deafultReturnTime.addSeconds(device.device_type.default_time.dateNumericValue() / 1000);
+ 		*/
 		
 		var inSchedTag = this.newItem("inSchedTag");
-		dateTimeTag.setAttribute("inSched", this._isInSchedule(checkoutTime, returnTime));
+		inSchedTag.setAttribute("inSched", this._altIsInSchedule(checkoutTime, returnTime));
 	},
 	
-	//Current scheduling function
-	_isInSchedule: function(checkoutTime, returnTime){
+	//current scheduling function
+	_isInSchedule: function(schedID, checkoutTime, returnTime, isManager){
 		var sCheckoutTime = new GlideDateTime(checkoutTime);
 		var sReturnTime = new GlideDateTime(returnTime);
 		
 		sCheckoutTime.add(-checkoutTime.getTZOffset());
 		sReturnTime.add(-returnTime.getTZOffset());
 		
-		var sched = new GlideSchedule('0b7986d40f58cb4012e4348ce1050e0f');
-		
-		var inSchedule = sched.isInSchedule(sReturnTime);
-		if(!inSchedule){
-			//gs.addErrorMessage('Server: ' + serverDateTime + 
-			//				' / Client: ' + returnTime + ' / Offset: ' + returnTime.getTZOffset());
-			
-			var chkoutLength = new GlideDateTime(sched.duration(sCheckoutTime, sReturnTime));
-			var chkoutLengthMS = chkoutLength.getNumericValue();
-			if(chkoutLengthMS > 0){
-				checkoutTime.add(chkoutLength.getNumericValue());
-				gs.addErrorMessage(checkoutTime);
-				return checkoutTime;
+		var sched = new GlideSchedule(schedID);
+		if(sched.isValid()){
+			if(sched.isInSchedule(sCheckoutTime)){
+				if(sched.isInSchedule(sReturnTime)){
+					return returnTime;
+				}else{
+					if(isManager){
+						gs.addErrorMessage("Warning: Return Time is outside operation hours.");
+						return returnTime;
+					}else{
+						gs.addInfoMessage("Return Time was outside operation hours and was trimmed " + 
+										  "to the nearest valid time.");
+						var duration = sched.duration(sCheckoutTime, sReturnTime);
+						var trimmedReturn = sched.add(sCheckoutTime, duration);
+						trimmedReturn.add(checkoutTime.getTZOffset());
+						return trimmedReturn;
+					}
+				}
 			}else{
 				gs.addErrorMessage("Checkouts are unavailable at this time.");
-				return "1970-01-01 00:00:00";
+				if(isManager){
+					return returnTime;
+				}else{
+					return '';
+				}
 			}
 		}
-		return returnTime;
 	},
 	
-	//Current function receiving arguments from the Return Time Check Client Script
+	renewWithSchedule: function(){
+		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_checkoutTime'));
+		var returnTime = new GlideDateTime(this.getParameter('sysparm_returnTime'));
+		var renewalCount = this.getParameter('sysparm_renewalCount');
+		var device = new GlideRecord('x_casus_laptop_devices_table');
+		device.get(this.getParameter('sysparm_device'));
+		
+		var isAdmin = gs.hasRole('x_casus_laptop.admin');
+	
+		var isUnderRenewalLimit = renewalCount < device.device_type.max_renewal;
+		
+		var renewedTag = this.newItem("renewedTag");
+		var renewed = false;
+		
+		if (isAdmin || isUnderRenewalLimit){
+			var now = new GlideDateTime();
+			var return_time = new GlideDateTime(returnTime);
+		
+			var isBeforeReturnTime = now.compareTo(return_time) != -1;
+		
+			if (isAdmin || isBeforeReturnTime){
+				var newReturnTime = new GlideDateTime();
+				var default_time = new GlideDateTime(device.device_type.default_time);
+		
+				newReturnTime.add(default_time.getNumericValue());
+				
+				now.add(now.getTZOffset());
+				newReturnTime.add(newReturnTime.getTZOffset());
+				
+				newReturnTime.setValue(this._isInSchedule(device.depot.schedule, 
+														  now, newReturnTime, isAdmin));
+				
+				if(newReturnTime != ''){
+					var returnTag = this.newItem("returnTag");
+					returnTag.setAttribute("returnTime", newReturnTime);
+					renewed = true;
+					
+					gs.addInfoMessage(device.device_type.device_type + " " + device.device_id + 
+									  " Renewed Until " + newReturnTime.getDisplayValue());
+				}
+			}else{
+				gs.addErrorMessage('Renewal is not allowed past return time.');
+			}
+		}else{
+			gs.addErrorMessage("Device has reached max renewal count.");
+		}
+		renewedTag.setAttribute("renewed", renewed);
+	},
+	
+	//current function receiving arguments from the Return Time Check Client Script
 	checkWithSchedule: function(){
 		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_checkoutTime'));
 		var returnTime = new GlideDateTime(this.getParameter('sysparm_returnTime'));
+		var device = new GlideRecord('x_casus_laptop_devices_table');
+		device.get(this.getParameter('sysparm_device'));
 		
-		var dateTimeTag = this.newItem("dateTimeTag");
-		dateTimeTag.setAttribute("dateTime", this._isInSchedule(checkoutTime, returnTime));
+		var isManager = gs.hasRole('x_casus_laptop.admin') ||
+		gs.hasRole('x_casus_laptop.airc_manager') ||
+		gs.hasRole('x_casus_laptop.asi_manager') ||
+		gs.hasRole('x_casus_laptop.library_manager');
+		
+		var inSchedTag = this.newItem("inSchedTag");
+		inSchedTag.setAttribute("inSched", 
+								this._isInSchedule(device.depot.schedule, 
+												   checkoutTime, returnTime, isManager));
 	},
 	
 	//Verifies that the User is a student and has no holds
@@ -150,15 +230,15 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		var now = gs.minutesAgoStart(0);
 		return now;
 	},
-		
-    type: 'CheckoutFormUtils'
+	
+	type: 'CheckoutFormUtils'
 });]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>hedge</sys_created_by>
         <sys_created_on>2017-03-22 21:08:10</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>59b670236fa9b600ad6cd4a21c3ee4d1</sys_id>
-        <sys_mod_count>111</sys_mod_count>
+        <sys_mod_count>174</sys_mod_count>
         <sys_name>CheckoutFormUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
@@ -166,6 +246,6 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_59b670236fa9b600ad6cd4a21c3ee4d1</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-04 22:27:46</sys_updated_on>
+        <sys_updated_on>2017-08-16 22:40:20</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -2,7 +2,11 @@
 <database>
     <element label="Depot" max_length="40" name="x_casus_laptop_depot" type="collection">
         <element display="true" label="Depot" mandatory="true" max_length="40" name="depot" type="string" unique="true"/>
+        <element label="Schedule" mandatory="true" max_length="32" name="schedule" reference="cmn_schedule" type="reference"/>
         <index name="index">
+            <element name="schedule"/>
+        </index>
+        <index name="index2">
             <element name="depot"/>
         </index>
     </element>
