@@ -29,8 +29,8 @@
 	var returnUtils = new ReturnUtils();
 	
 	if(returnUtils.isLate(current) == 1){
-		ticketState = 'Closed Incomplete';
-		ticketActive = true;
+		//ticketState = 'Closed Incomplete';
+		//ticketActive = true;
 		
 		var description = now.getDisplayValue() + ": " + current.device_name.device_type.device_type + " " + 
 							current.device_name.device_id + " returned late.";
@@ -46,6 +46,7 @@
 	current.state = ticketState;
 	current.active = ticketActive;
 	current.update();
+	gs.addInfoMessage(device.device_type.device_type + " " + device.device_id + " returned.");
 }else{
 	gs.addErrorMessage("Device was not checked out.");
 	action.setRedirectURL(current);
@@ -57,10 +58,10 @@
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>msn73</sys_created_by>
         <sys_created_on>2016-11-08 03:52:05</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>77eb4bc86fcf6200ad6cd4a21c3ee446</sys_id>
-        <sys_mod_count>120</sys_mod_count>
+        <sys_mod_count>122</sys_mod_count>
         <sys_name>Return</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -69,7 +70,7 @@
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_77eb4bc86fcf6200ad6cd4a21c3ee446</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-06-21 21:56:08</sys_updated_on>
+        <sys_updated_on>2017-09-21 18:40:26</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

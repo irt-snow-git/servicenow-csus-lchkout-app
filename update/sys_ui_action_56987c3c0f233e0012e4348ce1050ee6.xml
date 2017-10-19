@@ -21,13 +21,23 @@
         <name>Strike Invoice</name>
         <onclick/>
         <order>100</order>
-        <script><![CDATA[var hold = new GlideRecord('x_casus_laptop_hold');
-hold.get(current.hold);
-
-if(hold.state == '1'){
-	hold.state = '2';
-	hold.active = false;
-	hold.update();
+        <script><![CDATA[if(current.hold != ''){
+	var otherINV = new GlideRecord('x_casus_laptop_invoice');
+	otherINV.addActiveQuery();
+	otherINV.addQuery('hold', current.hold);
+	otherINV.addQuery('sys_id', '!=', current.sys_id);
+	otherINV.query();
+	
+	if(!otherINV.hasNext()){
+		var hold = new GlideRecord('x_casus_laptop_hold');
+		hold.get(current.hold);
+	
+		if(hold.state == '1'){
+			hold.state = '2';
+			hold.active = false;
+			hold.update();
+		}
+	}
 }
 
 current.state = '2';
@@ -43,7 +53,7 @@ current.update();]]></script>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>56987c3c0f233e0012e4348ce1050ee6</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Strike Invoice</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -52,7 +62,7 @@ current.update();]]></script>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_56987c3c0f233e0012e4348ce1050ee6</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-07-25 22:30:48</sys_updated_on>
+        <sys_updated_on>2017-08-17 17:45:19</sys_updated_on>
         <table>x_casus_laptop_invoice</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

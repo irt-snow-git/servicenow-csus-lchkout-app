@@ -143,6 +143,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 			var return_time = new GlideDateTime(returnTime);
 		
 			var isBeforeReturnTime = now.compareTo(return_time) != -1;
+			//gs.addInfoMessage(isBeforeReturnTime);
 		
 			if (isAdmin || isBeforeReturnTime){
 				var newReturnTime = new GlideDateTime();
@@ -160,9 +161,9 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 					var returnTag = this.newItem("returnTag");
 					returnTag.setAttribute("returnTime", newReturnTime);
 					renewed = true;
-					
-					gs.addInfoMessage(device.device_type.device_type + " " + device.device_id + 
-									  " Renewed Until " + newReturnTime.getDisplayValue());
+					var renewMessage = device.device_type.device_type + " " + device.device_id + " Renewed Until " + 
+						newReturnTime.getDisplayValue();
+					gs.addInfoMessage(renewMessage);
 				}
 			}else{
 				gs.addErrorMessage('Renewal is not allowed past return time.');
@@ -185,10 +186,21 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		gs.hasRole('x_casus_laptop.asi_manager') ||
 		gs.hasRole('x_casus_laptop.library_manager');
 		
+		var duration = new GlideDateTime(GlideDateTime.subtract(checkoutTime, returnTime));
+		var defaultTime = new GlideDateTime(device.device_type.default_time);
+		defaultTime.add(60000);
+		var isDefaultOrLess = duration.getNumericValue() < defaultTime.getNumericValue();
+		
 		var inSchedTag = this.newItem("inSchedTag");
-		inSchedTag.setAttribute("inSched", 
-								this._isInSchedule(device.depot.schedule, 
-												   checkoutTime, returnTime, isManager));
+		
+		if(isManager || isDefaultOrLess){
+			inSchedTag.setAttribute("inSched", 
+									this._isInSchedule(device.depot.schedule, 
+													   checkoutTime, returnTime, isManager));
+		}else{
+			gs.addErrorMessage("Return Time cannot be longer than the default duration.");
+			inSchedTag.setAttribute("inSched", '');
+		}
 	},
 	
 	//Verifies that the User is a student and has no holds
@@ -238,7 +250,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_created_on>2017-03-22 21:08:10</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>59b670236fa9b600ad6cd4a21c3ee4d1</sys_id>
-        <sys_mod_count>174</sys_mod_count>
+        <sys_mod_count>196</sys_mod_count>
         <sys_name>CheckoutFormUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
@@ -246,6 +258,6 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_59b670236fa9b600ad6cd4a21c3ee4d1</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-16 22:40:20</sys_updated_on>
+        <sys_updated_on>2017-09-21 21:59:19</sys_updated_on>
     </sys_script_include>
 </record_update>

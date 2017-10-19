@@ -39,7 +39,6 @@
 					ajax.addParam('sysparm_device', device);
 					ajax.getXML(getDateTime);
 				}
-				g_scratchpad.oldVal = newValue;
 			}
 		}
 	}
@@ -49,6 +48,7 @@ function getDateTime(response){
 	var inSchedTag= response.responseXML.getElementsByTagName("inSchedTag");
 	var inSched = inSchedTag[0].getAttribute("inSched");
 	g_form.setValue('return_time', inSched);
+	g_scratchpad.oldVal = inSched;
 	/*
 	if(inSched == "-1" || inSched == "0"){
 		g_form.setValue('return_time', '');
@@ -63,7 +63,7 @@ function getDateTime(response){
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>9dc338720f9e764012e4348ce1050e39</sys_id>
-        <sys_mod_count>64</sys_mod_count>
+        <sys_mod_count>65</sys_mod_count>
         <sys_name>Return Time Check</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -72,7 +72,7 @@ function getDateTime(response){
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_client_9dc338720f9e764012e4348ce1050e39</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-14 18:51:52</sys_updated_on>
+        <sys_updated_on>2017-08-18 16:55:21</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <type>onChange</type>
         <ui_type>10</ui_type>

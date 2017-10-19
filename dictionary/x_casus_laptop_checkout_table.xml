@@ -8,7 +8,7 @@
         <element label="Notes" max_length="200" name="notes" type="journal"/>
         <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
         <element default="0" label="Renewal Count" max_length="40" name="renewal_count" read_only="true" type="decimal"/>
-        <element label="Return Time" max_length="40" name="return_time" type="glide_date_time"/>
+        <element label="Return Time" mandatory="true" max_length="40" name="return_time" type="glide_date_time"/>
         <element choice="3" default="Beginning" label="State" max_length="40" name="state" read_only="true" type="choice">
             <choice>
                 <element label="Beginning" sequence="0" value="Beginning"/>
