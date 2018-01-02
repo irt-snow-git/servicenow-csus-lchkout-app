@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="abstract_type" label="Abstract type" language="en" table="x_casus_laptop_default_device_times">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>abstract_type</element>
+            <help/>
+            <hint/>
+            <label>Abstract type</label>
+            <language>en</language>
+            <name>x_casus_laptop_default_device_times</name>
+            <plural>Abstract types</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2017-12-19 22:30:17</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>27918e8f0fcb0b0012e4348ce1050e41</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Abstract type</sys_name>
+            <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+            <sys_update_name>sys_documentation_x_casus_laptop_default_device_times_abstract_type_en</sys_update_name>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2017-12-19 22:30:17</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

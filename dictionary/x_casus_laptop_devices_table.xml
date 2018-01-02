@@ -3,7 +3,6 @@
     <element label="Devices" max_length="40" name="x_casus_laptop_devices_table" type="collection">
         <element label="Barcode" mandatory="true" max_length="40" name="barcode" type="string" unique="true"/>
         <element label="Condition" max_length="40" name="condition" type="string"/>
-        <element label="Depot" mandatory="true" max_length="32" name="depot" reference="x_casus_laptop_depot" type="reference"/>
         <element display="true" label="Device ID" mandatory="true" max_length="40" name="device_id" type="string" unique="true"/>
         <element label="Device type" mandatory="true" max_length="32" name="device_type" reference="x_casus_laptop_default_device_times" type="reference"/>
         <element label="Mac Address" max_length="40" name="mac_address" type="string" unique="true"/>
@@ -23,15 +22,12 @@
             <element name="device_id"/>
         </index>
         <index name="index2">
-            <element name="depot"/>
-        </index>
-        <index name="index3">
             <element name="mac_address"/>
         </index>
-        <index name="index4">
+        <index name="index3">
             <element name="device_type"/>
         </index>
-        <index name="index5">
+        <index name="index4">
             <element name="barcode"/>
         </index>
     </element>

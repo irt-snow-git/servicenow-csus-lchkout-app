@@ -23,7 +23,7 @@
             <sys_mod_count>2</sys_mod_count>
             <sys_overrides/>
             <sys_ui_form display_value="x_casus_laptop_checkout_table" name="x_casus_laptop_checkout_table" sys_domain="global" view="Default view">b67690320f76ae0012e4348ce1050e4c</sys_ui_form>
-            <sys_ui_section caption="Option" display_value="Option" name="x_casus_laptop_checkout_table" sys_domain="global" view="Default view">327690320f76ae0012e4348ce1050e4c</sys_ui_section>
+            <sys_ui_section caption="Notes &amp; Activity" display_value="Notes &amp; Activity" name="x_casus_laptop_checkout_table" sys_domain="global" view="Default view">327690320f76ae0012e4348ce1050e4c</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
             <sys_updated_on>2017-01-04 23:10:54</sys_updated_on>
         </sys_ui_form_section>

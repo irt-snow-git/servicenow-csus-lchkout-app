@@ -24,67 +24,19 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		}
 		
 		var depotTag = this.newItem("depotTag");
-		depotTag.setAttribute("depot", device.depot);
+		depotTag.setAttribute("depot", device.device_type.depot);
 		
 		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_chkTime'));
 		var returnTime = new GlideDateTime(checkoutTime);
 		
-		returnTime.addSeconds(device.device_type.default_time.dateNumericValue() / 1000);
+		var defaultTime = new GlideDateTime(device.device_type.default_time);
+		returnTime.add(defaultTime.getNumericValue());
 		
 		var returnTag = this.newItem("returnTag");
 		
-		/*
- 		* This code section is for the alternate scheduling method
-		
-		var inSched = this._altIsInSchedule(checkoutTime, returnTime);
-		
-		if(inSched == 1){
-			returnTag.setAttribute("returnTime", returnTime);
-		}else{
-			returnTag.setAttribute("returnTime", inSched);
-		}
- 		*/
 		returnTag.setAttribute("returnTime", 
-							   this._isInSchedule(device.depot.schedule, checkoutTime, returnTime, false));
-	},
-	
-	//This is a test function to explore other scheduling options (currently unused)
-	_altIsInSchedule: function(checkoutTime, returnTime){
-		var sCheckoutTime = new GlideDateTime(checkoutTime);
-		sCheckoutTime.add(-checkoutTime.getTZOffset());
-		
-		var sched = new GlideSchedule('0b7986d40f58cb4012e4348ce1050e0f');
-		
-		if(sched.isInSchedule(sCheckoutTime)){
-			var sReturnTime = new GlideDateTime(returnTime);
-			sReturnTime.add(-returnTime.getTZOffset());
-			if(sched.isInSchedule(sReturnTime)){
-				return 1;
-			}else{
-				return 0;
-			}
-		}else{
-			gs.addErrorMessage("Checkouts are unavailable at this time.");
-			return -1;
-		}
-	},
-	
-	//This is a test function to explore ohter scheduling options (currently unused)
-	altCheckWithSchedule: function(){
-		//var device = new GlideRecord();
-		//device.get(this.getParameter('sysparm_device'));
-		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_checkoutTime'));
-		var returnTime = new GlideDateTime(this.getParameter('sysparm_returnTime'));
-		
-		/*
- 		* TODO: Finish checks for duration longer than default and clear based on technician role
-		
-		var defaultReturnTime = new GlideDateTime(checkoutTime);
-		deafultReturnTime.addSeconds(device.device_type.default_time.dateNumericValue() / 1000);
- 		*/
-		
-		var inSchedTag = this.newItem("inSchedTag");
-		inSchedTag.setAttribute("inSched", this._altIsInSchedule(checkoutTime, returnTime));
+							   this._isInSchedule(
+			device.device_type.depot.schedule, checkoutTime, returnTime, false));
 	},
 	
 	//current scheduling function
@@ -109,7 +61,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 										  "to the nearest valid time.");
 						var duration = sched.duration(sCheckoutTime, sReturnTime);
 						var trimmedReturn = sched.add(sCheckoutTime, duration);
-						trimmedReturn.add(checkoutTime.getTZOffset());
+						trimmedReturn.add(returnTime.getTZOffset());
 						return trimmedReturn;
 					}
 				}
@@ -124,54 +76,12 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		}
 	},
 	
-	renewWithSchedule: function(){
-		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_checkoutTime'));
-		var returnTime = new GlideDateTime(this.getParameter('sysparm_returnTime'));
-		var renewalCount = this.getParameter('sysparm_renewalCount');
-		var device = new GlideRecord('x_casus_laptop_devices_table');
-		device.get(this.getParameter('sysparm_device'));
-		
-		var isAdmin = gs.hasRole('x_casus_laptop.admin');
-	
-		var isUnderRenewalLimit = renewalCount < device.device_type.max_renewal;
-		
-		var renewedTag = this.newItem("renewedTag");
-		var renewed = false;
-		
-		if (isAdmin || isUnderRenewalLimit){
-			var now = new GlideDateTime();
-			var return_time = new GlideDateTime(returnTime);
-		
-			var isBeforeReturnTime = now.compareTo(return_time) != -1;
-			//gs.addInfoMessage(isBeforeReturnTime);
-		
-			if (isAdmin || isBeforeReturnTime){
-				var newReturnTime = new GlideDateTime();
-				var default_time = new GlideDateTime(device.device_type.default_time);
-		
-				newReturnTime.add(default_time.getNumericValue());
-				
-				now.add(now.getTZOffset());
-				newReturnTime.add(newReturnTime.getTZOffset());
-				
-				newReturnTime.setValue(this._isInSchedule(device.depot.schedule, 
-														  now, newReturnTime, isAdmin));
-				
-				if(newReturnTime != ''){
-					var returnTag = this.newItem("returnTag");
-					returnTag.setAttribute("returnTime", newReturnTime);
-					renewed = true;
-					var renewMessage = device.device_type.device_type + " " + device.device_id + " Renewed Until " + 
-						newReturnTime.getDisplayValue();
-					gs.addInfoMessage(renewMessage);
-				}
-			}else{
-				gs.addErrorMessage('Renewal is not allowed past return time.');
-			}
-		}else{
-			gs.addErrorMessage("Device has reached max renewal count.");
-		}
-		renewedTag.setAttribute("renewed", renewed);
+	renewWithSchedule: function(schedule, now, newReturnTime, isAdmin){
+		now.add(now.getTZOffset());
+		newReturnTime.add(newReturnTime.getTZOffset());
+		var trimmedReturn = this._isInSchedule(schedule, now, newReturnTime, isAdmin);
+		trimmedReturn.add(-trimmedReturn.getTZOffset());
+		return trimmedReturn;
 	},
 	
 	//current function receiving arguments from the Return Time Check Client Script
@@ -195,7 +105,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		
 		if(isManager || isDefaultOrLess){
 			inSchedTag.setAttribute("inSched", 
-									this._isInSchedule(device.depot.schedule, 
+									this._isInSchedule(device.device_type.depot.schedule, 
 													   checkoutTime, returnTime, isManager));
 		}else{
 			gs.addErrorMessage("Return Time cannot be longer than the default duration.");
@@ -250,7 +160,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_created_on>2017-03-22 21:08:10</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>59b670236fa9b600ad6cd4a21c3ee4d1</sys_id>
-        <sys_mod_count>196</sys_mod_count>
+        <sys_mod_count>210</sys_mod_count>
         <sys_name>CheckoutFormUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
@@ -258,6 +168,6 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_59b670236fa9b600ad6cd4a21c3ee4d1</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-09-21 21:59:19</sys_updated_on>
+        <sys_updated_on>2017-12-21 19:34:20</sys_updated_on>
     </sys_script_include>
 </record_update>

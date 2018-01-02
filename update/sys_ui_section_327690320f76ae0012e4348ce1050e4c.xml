@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_ui_section caption="Option" section_id="327690320f76ae0012e4348ce1050e4c" sys_domain="global" table="x_casus_laptop_checkout_table" version="3" view="">
+    <sys_ui_section caption="Notes &amp; Activity" section_id="327690320f76ae0012e4348ce1050e4c" sys_domain="global" table="x_casus_laptop_checkout_table" version="3" view="">
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>notes</element>
             <position>0</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-07-05 21:32:32</sys_created_on>
-            <sys_id>11e23ddd6fb7b240ad6cd4a21c3ee4f7</sys_id>
+            <sys_created_on>2017-12-19 17:43:14</sys_created_on>
+            <sys_id>2eefb4830f8b0b0012e4348ce1050eb7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
-            <sys_ui_section caption="Option" display_value="Option" name="x_casus_laptop_checkout_table" sys_domain="global" view="Default view">327690320f76ae0012e4348ce1050e4c</sys_ui_section>
+            <sys_ui_section caption="Notes &amp; Activity" display_value="Notes &amp; Activity" name="x_casus_laptop_checkout_table" sys_domain="global" view="Default view">327690320f76ae0012e4348ce1050e4c</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-07-05 21:32:32</sys_updated_on>
+            <sys_updated_on>2017-12-19 17:43:14</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -19,29 +19,29 @@
             <element>activity.xml</element>
             <position>1</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-07-05 21:32:33</sys_created_on>
-            <sys_id>91e23ddd6fb7b240ad6cd4a21c3ee4f7</sys_id>
+            <sys_created_on>2017-12-19 17:43:14</sys_created_on>
+            <sys_id>aeefb4830f8b0b0012e4348ce1050eb7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter display_value="Activities (filtered)">444ea5c6bf310100e628555b3f0739d6</sys_ui_formatter>
-            <sys_ui_section caption="Option" display_value="Option" name="x_casus_laptop_checkout_table" sys_domain="global" view="Default view">327690320f76ae0012e4348ce1050e4c</sys_ui_section>
+            <sys_ui_section caption="Notes &amp; Activity" display_value="Notes &amp; Activity" name="x_casus_laptop_checkout_table" sys_domain="global" view="Default view">327690320f76ae0012e4348ce1050e4c</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-07-05 21:32:33</sys_updated_on>
+            <sys_updated_on>2017-12-19 17:43:14</sys_updated_on>
             <sys_user/>
             <type>formatter</type>
         </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
-            <caption>Option</caption>
+            <caption>Notes &amp; Activity</caption>
             <header>false</header>
             <name>x_casus_laptop_checkout_table</name>
             <roles/>
             <sys_class_name>sys_ui_section</sys_class_name>
             <sys_created_by>msn73</sys_created_by>
             <sys_created_on>2016-11-03 17:25:43</sys_created_on>
-            <sys_customer_update>false</sys_customer_update>
+            <sys_customer_update>true</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_id>327690320f76ae0012e4348ce1050e4c</sys_id>
-            <sys_mod_count>3</sys_mod_count>
-            <sys_name>Option</sys_name>
+            <sys_mod_count>4</sys_mod_count>
+            <sys_name>Notes &amp; Activity</sys_name>
             <sys_overrides display_value="">global</sys_overrides>
             <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
             <sys_policy/>
@@ -49,7 +49,7 @@
             <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
             <sys_update_name>sys_ui_section_327690320f76ae0012e4348ce1050e4c</sys_update_name>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-07-05 21:32:33</sys_updated_on>
+            <sys_updated_on>2017-12-19 17:43:13</sys_updated_on>
             <sys_user/>
             <title>false</title>
             <view display_value="Default view" name="NULL">Default view</view>

@@ -17,7 +17,7 @@
         <name>x_casus_laptop_devices_table</name>
         <order>2200</order>
         <override_menu_roles>false</override_menu_roles>
-        <query>&amp;sysparm_fixed_query=depot=8e100fc46fcf6200ad6cd4a21c3ee41e</query>
+        <query>&amp;sysparm_fixed_query=device_type.depot=8e100fc46fcf6200ad6cd4a21c3ee41e</query>
         <report/>
         <roles>x_casus_laptop.admin,x_casus_laptop.asi_manager,x_casus_laptop.asi_student_assistant</roles>
         <survey/>
@@ -28,7 +28,7 @@
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>b11228196fe04300ad6cd4a21c3ee43e</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>ASI Devices</sys_name>
         <sys_overrides display_value="ASI">ce4b68df6f8fa200ad6cd4a21c3ee42f</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -37,7 +37,7 @@
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_app_module_b11228196fe04300ad6cd4a21c3ee43e</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-11 22:29:34</sys_updated_on>
+        <sys_updated_on>2017-12-20 01:00:03</sys_updated_on>
         <timeline_page/>
         <title>ASI Devices</title>
         <u_basic_module/>

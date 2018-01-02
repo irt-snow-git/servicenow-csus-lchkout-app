@@ -24,7 +24,12 @@ Checks two conditions: &#13;
         <name>Confirm</name>
         <onclick>runclientcode()</onclick>
         <order>100</order>
-        <script><![CDATA[var hasMultipleDevices = checkForMultipleDevices(current.student_name);
+        <script><![CDATA[var hasMultipleDevices = false;
+
+if(current.device_name.device_type.abstract_type.checkout_limit != 0){
+	hasMultipleDevices = checkForMultipleDevices(
+		current.student_name, current.device_name.device_type.abstract_type, current.device_name.device_type.abstract_type.checkout_limit);
+}
 
 var isManager = gs.hasRole('x_casus_laptop.admin') || 
 	gs.hasRole('x_casus_laptop.airc_manager') || 
@@ -33,10 +38,10 @@ var isManager = gs.hasRole('x_casus_laptop.admin') ||
 
 if (hasMultipleDevices) {
 	if (isManager) {
-		gs.addErrorMessage("Student already has the same device type checked out");
+		gs.addErrorMessage("Student already has the same device type checked out.");
 		checkoutDevice();
 	} else {
-		gs.addErrorMessage("Checkout Denied: Student already has the same device type checked out");
+		gs.addErrorMessage("Checkout Denied: Student already has the same device type checked out.");
 		action.setRedirectURL(current);
 	}
 } else { //No checkout conflicts, proceed to checkout the item
@@ -64,26 +69,17 @@ function checkoutDevice() {
 }
 /*_________________________________________________________________
    * Description: Checks if the customer has multiple devices of the same type
-   * Parameters: user id of customer
+   * Parameters: user id of customer, sys id of abstract type of device
    * Returns: (boolean) True - Yes, they already have a same type device checked out
    ________________________________________________________________*/
-function checkForMultipleDevices(student_sys_id) {
-	// Find other checkout records for the student
-	var checkoutRecord = new GlideRecord('x_casus_laptop_checkout_table');
-	checkoutRecord.addQuery('state', 'Checked Out');
-	checkoutRecord.addQuery('student_name', student_sys_id);
-	checkoutRecord.query();
-	// Check each to see if the records are for the same type of device
-	while (checkoutRecord.next()) {
-		var otherRecordType = checkoutRecord.device_name.device_type.device_type;
-		var currentType = current.device_name.device_type.getDisplayValue();
-		
-		if (otherRecordType.toString() === currentType.toString()) {
-			gs.addInfoMessage(checkoutRecord.number);
-			return true; // Found a match, stop searching
-		}
-	}
-	return false;
+function checkForMultipleDevices(student_sysid, abstype_sysid, checkout_limit) {
+	var ticketCount = new GlideAggregate('x_casus_laptop_checkout_table');
+	ticketCount.addEncodedQuery("active=true^state=Checked Out^student_name="+student_sysid+"^device_name.device_type.abstract_type="+abstype_sysid);
+	ticketCount.addAggregate('COUNT');
+	ticketCount.query();
+	ticketCount.next();
+	//gs.info("LAP CHK: Count " + ticketCount.getAggregate('COUNT') + " Limit " + checkout_limit);
+	return parseInt(ticketCount.getAggregate('COUNT')) >= parseInt(checkout_limit);
 }
 ]]></script>
         <show_insert>false</show_insert>
@@ -96,7 +92,7 @@ function checkForMultipleDevices(student_sys_id) {
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>c59b87c86fcf6200ad6cd4a21c3ee4e6</sys_id>
-        <sys_mod_count>77</sys_mod_count>
+        <sys_mod_count>84</sys_mod_count>
         <sys_name>Confirm</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -105,7 +101,7 @@ function checkForMultipleDevices(student_sys_id) {
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_c59b87c86fcf6200ad6cd4a21c3ee4e6</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-16 17:00:58</sys_updated_on>
+        <sys_updated_on>2017-12-21 01:11:40</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

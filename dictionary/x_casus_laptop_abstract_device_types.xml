@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Abstract Device Types" max_length="40" name="x_casus_laptop_abstract_device_types" type="collection">
+        <element default="1" label="Checkout limit" mandatory="true" max_length="40" name="checkout_limit" type="integer"/>
+        <element label="Name" mandatory="true" max_length="40" name="name" type="string"/>
+    </element>
+</database>

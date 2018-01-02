@@ -11,7 +11,7 @@
         <name>Return Time Check</name>
         <order/>
         <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
-	if (isLoading || newValue === '') {
+	if (isLoading || newValue === '' || g_form.getValue('state') == 'Checked Out') {
 		return;
 	}
 	
@@ -33,7 +33,6 @@
 				}else{
 					var ajax = new GlideAjax('CheckoutFormUtils');
 					ajax.addParam('sysparm_name','checkWithSchedule');
-					//ajax.addParam('sysparm_name','altCheckWithSchedule');
 					ajax.addParam('sysparm_returnTime', newValue);
 					ajax.addParam('sysparm_checkoutTime', checkout_t);
 					ajax.addParam('sysparm_device', device);
@@ -49,13 +48,6 @@ function getDateTime(response){
 	var inSched = inSchedTag[0].getAttribute("inSched");
 	g_form.setValue('return_time', inSched);
 	g_scratchpad.oldVal = inSched;
-	/*
-	if(inSched == "-1" || inSched == "0"){
-		g_form.setValue('return_time', '');
-		if(inSched == "0"){
-			g_form.showErrorBox('return_time', 'The return time is outside operating hours. Please manually select a return time.');
-		}
-	}*/
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>hedge</sys_created_by>
@@ -63,7 +55,7 @@ function getDateTime(response){
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>9dc338720f9e764012e4348ce1050e39</sys_id>
-        <sys_mod_count>65</sys_mod_count>
+        <sys_mod_count>67</sys_mod_count>
         <sys_name>Return Time Check</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -72,7 +64,7 @@ function getDateTime(response){
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_client_9dc338720f9e764012e4348ce1050e39</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-18 16:55:21</sys_updated_on>
+        <sys_updated_on>2017-12-20 00:39:56</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <type>onChange</type>
         <ui_type>10</ui_type>

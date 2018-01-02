@@ -17,7 +17,7 @@
         <name>x_casus_laptop_devices_table</name>
         <order>1200</order>
         <override_menu_roles>false</override_menu_roles>
-        <query>&amp;sysparm_fixed_query=depot=5100cbc46fcf6200ad6cd4a21c3ee46f</query>
+        <query>&amp;sysparm_fixed_query=device_type.depot=5100cbc46fcf6200ad6cd4a21c3ee46f</query>
         <report/>
         <roles>x_casus_laptop.admin,x_casus_laptop.airc_manager,x_casus_laptop.airc_student_assistant</roles>
         <survey/>
@@ -28,7 +28,7 @@
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>bc8f18d56fe04300ad6cd4a21c3ee405</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>AIRC Devices</sys_name>
         <sys_overrides display_value="AIRC">f92b28df6f8fa200ad6cd4a21c3ee443</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -37,7 +37,7 @@
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_app_module_bc8f18d56fe04300ad6cd4a21c3ee405</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-11 22:16:50</sys_updated_on>
+        <sys_updated_on>2017-12-20 01:02:07</sys_updated_on>
         <timeline_page/>
         <title>AIRC Devices</title>
         <u_basic_module/>
