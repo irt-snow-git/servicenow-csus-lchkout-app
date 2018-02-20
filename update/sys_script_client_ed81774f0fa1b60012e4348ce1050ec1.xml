@@ -38,7 +38,7 @@ function getTime(response){
 		g_form.setValue('device_name', '');
 		g_form.setValue('return_time', '');
 		g_form.setValue('center', '');
-		g_form.showErrorBox('device_name','Device is already checked out!');
+		g_form.showErrorBox('device_name','Error: Device is currently unavailable.');
 	}else{
 		var returnTag = response.responseXML.getElementsByTagName("returnTag");
 		var returnTime = returnTag[0].getAttribute("returnTime");
@@ -55,7 +55,7 @@ function getTime(response){
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>ed81774f0fa1b60012e4348ce1050ec1</sys_id>
-        <sys_mod_count>87</sys_mod_count>
+        <sys_mod_count>88</sys_mod_count>
         <sys_name>Form Changes based on Device</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -64,7 +64,7 @@ function getTime(response){
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_client_ed81774f0fa1b60012e4348ce1050ec1</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-12-20 21:47:31</sys_updated_on>
+        <sys_updated_on>2018-01-08 23:40:42</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <type>onChange</type>
         <ui_type>0</ui_type>

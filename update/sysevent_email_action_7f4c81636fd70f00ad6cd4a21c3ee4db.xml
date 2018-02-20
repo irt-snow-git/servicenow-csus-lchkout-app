@@ -3,22 +3,20 @@
     <sysevent_email_action action="INSERT_OR_UPDATE">
         <action_insert>false</action_insert>
         <action_update>true</action_update>
-        <active>false</active>
+        <active>true</active>
         <advanced_condition/>
         <affected_field_on_event/>
         <collection>x_casus_laptop_checkout_table</collection>
-        <condition table="x_casus_laptop_checkout_table">return_timeVALCHANGES^EQ<item endquery="false" field="return_time" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
-            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
-        </condition>
+        <condition/>
         <content_type>text/html</content_type>
         <description/>
-        <event_name>approval.cancelled</event_name>
+        <event_name>x_casus_laptop.renew_email</event_name>
         <event_parm_1>false</event_parm_1>
         <event_parm_2>false</event_parm_2>
         <exclude_delegates>false</exclude_delegates>
         <force_delivery>false</force_delivery>
         <from>Sac State No Reply &lt;noreply@csus.edu&gt;</from>
-        <generation_type>engine</generation_type>
+        <generation_type>event</generation_type>
         <group/>
         <group_field/>
         <importance/>
@@ -55,7 +53,7 @@
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>7f4c81636fd70f00ad6cd4a21c3ee4db</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Customer Renew Email</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -64,7 +62,7 @@
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sysevent_email_action_7f4c81636fd70f00ad6cd4a21c3ee4db</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2018-01-02 18:21:55</sys_updated_on>
+        <sys_updated_on>2018-01-12 18:20:07</sys_updated_on>
         <sys_version>2</sys_version>
         <template/>
         <type>email</type>

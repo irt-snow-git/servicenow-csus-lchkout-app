@@ -18,7 +18,7 @@
                 <element label="Closed Incomplete" sequence="4" value="Closed Incomplete"/>
             </choice>
         </element>
-        <element attributes="ref_auto_completer=AJAXTableCompleter,ref_ac_columns=employee_number,ref_ac_columns_search=true" label="Student" mandatory="true" max_length="40" name="student_name" reference="sys_user" reference_qual="active=true^u_faculty=true^ORu_staff=true^ORu_student=true^EQ" reference_qual_condition="active=true^u_faculty=true^ORu_staff=true^ORu_student=true^EQ" type="reference"/>
+        <element attributes="ref_auto_completer=AJAXTableCompleter,ref_ac_columns=u_attribute7,ref_ac_columns_search=true" label="Student" mandatory="true" max_length="40" name="student_name" reference="sys_user" reference_qual="active=true^u_faculty=true^ORu_staff=true^ORu_student=true^EQ" reference_qual_condition="active=true^u_faculty=true^ORu_staff=true^ORu_student=true^EQ" type="reference"/>
         <index name="index">
             <element name="center"/>
         </index>

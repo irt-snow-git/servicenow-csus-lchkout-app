@@ -11,47 +11,35 @@ laptopTickets.addQuery('state', 'Checked Out');
 laptopTickets.query();
 laptopTickets.next();
 laptopTickets.getAggregate('COUNT') != '0']]></condition>
-        <conditional>true</conditional>
+        <conditional>false</conditional>
         <name>Check For Late Devices</name>
         <run_as display_value="Nicholas Hedge">b42c9dcd95e31500c74359871d51e499</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
         <run_dayofweek>1</run_dayofweek>
-        <run_period/>
-        <run_start>2017-06-15 16:40:00</run_start>
+        <run_period>1970-01-01 00:05:00</run_period>
+        <run_start>2018-01-01 08:00:00</run_start>
         <run_time>1970-01-01 08:00:00</run_time>
-        <run_type>daily</run_type>
-        <script><![CDATA[var returnUtils = new ReturnUtils();
-var now = new GlideDateTime();
-var expireDate = new GlideDateTime();
-expireDate.addMonthsUTC(6);
+        <run_type>periodically</run_type>
+        <script><![CDATA[var now = new GlideDateTime();
+
 var lateTicket = new GlideRecord('x_casus_laptop_checkout_table');
-//Query for all active laptops that have a return time before the current time.
-lateTicket.addActiveQuery();
-lateTicket.addQuery('return_time', '<', now);
-lateTicket.addQuery('state', 'Checked Out');
+lateTicket.addEncodedQuery('active=true^state=Checked Out^return_time<' + now);
 lateTicket.query();
 
+var returnUtils = new ReturnUtils();
 while(lateTicket.hasNext()){
 	lateTicket.next();
 	
 	if(returnUtils.isLate(lateTicket) == 1){
-		var description = now.getDisplayValue() + ": " + lateTicket.device_name.device_type.device_type + " " 
-		+ lateTicket.device_name.device_id + " not returned.";
-		
-		returnUtils.assignHoldAndInvoice(lateTicket, description);
-		
-		var hold = new GlideRecord('x_casus_laptop_hold');
-		hold.addActiveQuery();
-		hold.addNotNullQuery('end_date');
-		hold.addQuery('checkout_ticket', lateTicket.sys_id);
-		hold.query();
-		
-		if(!hold.hasNext()){
+		if(!returnUtils.hasHold(lateTicket)){
+			
+			
+			var description = now.getDisplayValue() + ": " + lateTicket.device_name.device_type.device_type + " "
+			+ lateTicket.device_name.device_id + " not returned.";
+			
 			var holdID = returnUtils.createHold(lateTicket, description);
-			hold.get(holdID);
-			hold.end_date = expireDate;
-			hold.update();
+			returnUtils.createInvoice(lateTicket, holdID, description);
 		}
 	}
 }]]></script>
@@ -60,7 +48,7 @@ while(lateTicket.hasNext()){
         <sys_created_on>2017-06-13 22:00:51</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>d7945c9e0fd73a0012e4348ce1050e3e</sys_id>
-        <sys_mod_count>41</sys_mod_count>
+        <sys_mod_count>48</sys_mod_count>
         <sys_name>Check For Late Devices</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy/>
@@ -68,7 +56,7 @@ while(lateTicket.hasNext()){
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sysauto_script_d7945c9e0fd73a0012e4348ce1050e3e</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-12-21 18:56:36</sys_updated_on>
+        <sys_updated_on>2018-01-10 18:58:47</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>

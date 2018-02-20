@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_label/>
+        <action_name/>
+        <action_query>false</action_query>
+        <action_run_at>server</action_run_at>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <application/>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_casus_laptop_default_device_times</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Abort Device Types Improper Entries</name>
+        <onclick/>
+        <order>100</order>
+        <priority>100</priority>
+        <read_access_action>false</read_access_action>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	
+	if(current.default_time.dateNumericValue() > current.max_time.dateNumericValue()){
+		gs.addErrorMessage('Default Time cannot be greater than Max Time.');
+		current.setAbortAction(true);
+	}
+	if(current.max_renewal < 0){
+		gs.addErrorMessage('Max Renewal cannot be negative.');
+		current.setAbortAction(true);
+	}
+	
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2018-01-09 23:55:32</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>d237c6350f2b834012e4348ce1050ea8</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Abort Device Types Improper Entries</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_script_d237c6350f2b834012e4348ce1050ea8</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2018-01-23 20:51:37</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+</record_update>

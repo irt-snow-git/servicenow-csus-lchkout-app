@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_casus_laptop.AccessUtils</api_name>
+        <client_callable>false</client_callable>
+        <description>Consolidates access role checks in scripts and UI actions to one location for easy extension / modification in the future. Ex: adding a new depot.</description>
+        <name>AccessUtils</name>
+        <script><![CDATA[var AccessUtils = Class.create();
+AccessUtils.prototype = {
+	initialize: function() {
+	},
+	
+	isManager: function(){
+		return gs.hasRole('x_casus_laptop.admin') || 
+				gs.hasRole('x_casus_laptop.airc_manager') || 
+				gs.hasRole('x_casus_laptop.asi_manager') || 
+				gs.hasRole('x_casus_laptop.library_manager');
+	},
+	
+	isAdmin: function(){
+		return gs.hasRole('x_casus_laptop.admin');
+	},
+	
+	type: 'AccessUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2018-01-03 21:42:29</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>08468fb76f9f0f00ad6cd4a21c3ee48e</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>AccessUtils</sys_name>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_script_include_08468fb76f9f0f00ad6cd4a21c3ee48e</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2018-01-03 23:49:04</sys_updated_on>
+    </sys_script_include>
+</record_update>

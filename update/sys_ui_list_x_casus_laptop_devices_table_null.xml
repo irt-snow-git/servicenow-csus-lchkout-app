@@ -4,152 +4,92 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>device_id</element>
-            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1d5c57c30fa1b60012e4348ce1050ed1</list_id>
+            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">ae94da630f17cf0012e4348ce1050e41</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_id>515c57c30fa1b60012e4348ce1050ed2</sys_id>
+            <sys_created_on>2018-01-02 23:25:53</sys_created_on>
+            <sys_id>e294da630f17cf0012e4348ce1050e42</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
+            <sys_updated_on>2018-01-02 23:25:53</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>state</element>
-            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1d5c57c30fa1b60012e4348ce1050ed1</list_id>
+            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">ae94da630f17cf0012e4348ce1050e41</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
             <sum>false</sum>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_id>d15c57c30fa1b60012e4348ce1050ed2</sys_id>
+            <sys_created_on>2018-01-02 23:25:53</sys_created_on>
+            <sys_id>6694da630f17cf0012e4348ce1050e42</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
+            <sys_updated_on>2018-01-02 23:25:53</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>barcode</element>
-            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1d5c57c30fa1b60012e4348ce1050ed1</list_id>
+            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">ae94da630f17cf0012e4348ce1050e41</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
             <sum>false</sum>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_id>555c57c30fa1b60012e4348ce1050ed2</sys_id>
+            <sys_created_on>2018-01-02 23:25:53</sys_created_on>
+            <sys_id>e694da630f17cf0012e4348ce1050e42</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
+            <sys_updated_on>2018-01-02 23:25:53</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>notes</element>
-            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1d5c57c30fa1b60012e4348ce1050ed1</list_id>
+            <element>serial_number</element>
+            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">ae94da630f17cf0012e4348ce1050e41</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>3</position>
             <sum>false</sum>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_id>d55c57c30fa1b60012e4348ce1050ed2</sys_id>
+            <sys_created_on>2018-01-02 23:25:53</sys_created_on>
+            <sys_id>6a94da630f17cf0012e4348ce1050e42</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
+            <sys_updated_on>2018-01-02 23:25:53</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>condition</element>
-            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1d5c57c30fa1b60012e4348ce1050ed1</list_id>
+            <element>make</element>
+            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">ae94da630f17cf0012e4348ce1050e41</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>4</position>
             <sum>false</sum>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_id>595c57c30fa1b60012e4348ce1050ed2</sys_id>
+            <sys_created_on>2018-01-02 23:25:53</sys_created_on>
+            <sys_id>ea94da630f17cf0012e4348ce1050e42</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
+            <sys_updated_on>2018-01-02 23:25:53</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>price</element>
-            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1d5c57c30fa1b60012e4348ce1050ed1</list_id>
+            <element>model</element>
+            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">ae94da630f17cf0012e4348ce1050e41</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>5</position>
             <sum>false</sum>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_id>d95c57c30fa1b60012e4348ce1050ed2</sys_id>
+            <sys_created_on>2018-01-02 23:25:53</sys_created_on>
+            <sys_id>6e94da630f17cf0012e4348ce1050e42</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>make</element>
-            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1d5c57c30fa1b60012e4348ce1050ed1</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>6</position>
-            <sum>false</sum>
-            <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_id>5d5c17070fa1b60012e4348ce1050e97</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>model</element>
-            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1d5c57c30fa1b60012e4348ce1050ed1</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>7</position>
-            <sum>false</sum>
-            <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_id>dd5c17070fa1b60012e4348ce1050e97</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>serial_number</element>
-            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1d5c57c30fa1b60012e4348ce1050ed1</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>8</position>
-            <sum>false</sum>
-            <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_id>515c17070fa1b60012e4348ce1050e98</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>mac_address</element>
-            <list_id display_value="x_casus_laptop_devices_table" element="NULL" name="x_casus_laptop_devices_table" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1d5c57c30fa1b60012e4348ce1050ed1</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>9</position>
-            <sum>false</sum>
-            <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_id>d15c17070fa1b60012e4348ce1050e98</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
+            <sys_updated_on>2018-01-02 23:25:53</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -163,10 +103,10 @@
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-03-21 19:21:18</sys_created_on>
-            <sys_customer_update>false</sys_customer_update>
+            <sys_created_on>2018-01-02 23:25:53</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_id>1d5c57c30fa1b60012e4348ce1050ed1</sys_id>
+            <sys_id>ae94da630f17cf0012e4348ce1050e41</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>x_casus_laptop_devices_table</sys_name>
             <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -175,7 +115,7 @@
             <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
             <sys_update_name>sys_ui_list_x_casus_laptop_devices_table_null</sys_update_name>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-03-21 19:21:18</sys_updated_on>
+            <sys_updated_on>2018-01-02 23:25:53</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

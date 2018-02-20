@@ -39,7 +39,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 			device.device_type.depot.schedule, checkoutTime, returnTime, false));
 	},
 	
-	//current scheduling function
+	//Private scheduling function that trims the return time if it is outside the specified schedule
 	_isInSchedule: function(schedID, checkoutTime, returnTime, isManager){
 		var sCheckoutTime = new GlideDateTime(checkoutTime);
 		var sReturnTime = new GlideDateTime(returnTime);
@@ -76,6 +76,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		}
 	},
 	
+	//Verifies the default renewed return time is in the schedule associated with the depot. Server side of Renew UI Action
 	renewWithSchedule: function(schedule, now, newReturnTime, isAdmin){
 		now.add(now.getTZOffset());
 		newReturnTime.add(newReturnTime.getTZOffset());
@@ -84,73 +85,76 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
 		return trimmedReturn;
 	},
 	
-	//current function receiving arguments from the Return Time Check Client Script
+	//Verifies the given return time is in the schedule associated with the depot. Server side of Return Time Check client script
 	checkWithSchedule: function(){
 		var checkoutTime = new GlideDateTime(this.getParameter('sysparm_checkoutTime'));
 		var returnTime = new GlideDateTime(this.getParameter('sysparm_returnTime'));
 		var device = new GlideRecord('x_casus_laptop_devices_table');
 		device.get(this.getParameter('sysparm_device'));
 		
-		var isManager = gs.hasRole('x_casus_laptop.admin') ||
-		gs.hasRole('x_casus_laptop.airc_manager') ||
-		gs.hasRole('x_casus_laptop.asi_manager') ||
-		gs.hasRole('x_casus_laptop.library_manager');
+		var accessUtils = new AccessUtils();
+		var isManager = accessUtils.isManager();
 		
 		var duration = new GlideDateTime(GlideDateTime.subtract(checkoutTime, returnTime));
-		var defaultTime = new GlideDateTime(device.device_type.default_time);
-		defaultTime.add(60000);
-		var isDefaultOrLess = duration.getNumericValue() < defaultTime.getNumericValue();
+		var maxTime = new GlideDateTime(device.device_type.max_time);
+		maxTime.add(60000);
+		var isMaxOrLess = duration.getNumericValue() < maxTime.getNumericValue();
 		
 		var inSchedTag = this.newItem("inSchedTag");
 		
-		if(isManager || isDefaultOrLess){
+		if(isManager || isMaxOrLess){
 			inSchedTag.setAttribute("inSched", 
 									this._isInSchedule(device.device_type.depot.schedule, 
 													   checkoutTime, returnTime, isManager));
 		}else{
-			gs.addErrorMessage("Return Time cannot be longer than the default duration.");
+			gs.addErrorMessage("Return Time cannot be longer than the maximum duration.");
 			inSchedTag.setAttribute("inSched", '');
 		}
 	},
 	
-	//Verifies that the User is a student and has no holds
+	//Verifies the Customer's student and hold status as well as the Technician's manager status
 	checkStudent: function(){
 		var student = new GlideRecord('sys_user');
 		student.get(this.getParameter('sysparm_student'));
 		
-		//Put User's student status into XML
+		//Customer's student status
 		var studentTag = this.newItem("studentTag");
 		studentTag.setAttribute("isStudent", student.u_student);
 		
-		//Put User's faculty status into XML
+		//Customer's faculty status
 		var facultyTag = this.newItem("facultyTag");
 		facultyTag.setAttribute("isFaculty", student.u_faculty);
 		
-		//Put User's staff status into XML
+		//Customer's staff status
 		var staffTag = this.newItem("staffTag");
 		staffTag.setAttribute("isStaff", student.u_staff);
 		
-		//Check if User has holds
+		//Technician's manager status
+		var accessUtils = new AccessUtils();
+		var managerTag = this.newItem("managerTag");
+		managerTag.setAttribute("isManager", accessUtils.isManager());
+		
+		//Customer's hold status
 		var holds = new GlideRecord('x_casus_laptop_hold');
-		holds.addActiveQuery();
+		holds.addEncodedQuery('state=1^checkout_ticket.student_name.sys_id='+student.sys_id);
 		holds.query();
 		
-		var hasHold = "false";
-		while(holds.hasNext()){
-			holds.next();
-			if(student.sys_id == holds.checkout_ticket.student_name.sys_id){
-				hasHold = "true";
-			}
-		}
-		//Put boolean in XML based on how many holds the User has
 		var holdTag = this.newItem("holdTag");
-		holdTag.setAttribute("hasHold", hasHold);
+		holdTag.setAttribute("hasHold", holds.hasNext());
 	},
 	
-	//Returns curernt time: used for list filtering
+	//Returns curernt time
 	getNowDateTime: function(){
-		var now = gs.minutesAgoStart(0);
-		return now;
+		var nowTag = this.newItem("nowTag");
+		nowTag.setAttribute("now", (new GlideDateTime()));
+	},
+	
+	//Returns the result from the compareTo function to the Max Time Check client script
+	compareDateTimes: function(){
+		var defaultTime = new GlideDateTime(this.getParameter('sysparm_defTime'));
+		var maxTime = new GlideDateTime(this.getParameter('sysparm_maxTime'));
+		var compareTag = this.newItem("compareTag");
+		compareTag.setAttribute("compareValue", defaultTime.compareTo(maxTime));
 	},
 	
 	type: 'CheckoutFormUtils'
@@ -160,7 +164,7 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_created_on>2017-03-22 21:08:10</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>59b670236fa9b600ad6cd4a21c3ee4d1</sys_id>
-        <sys_mod_count>210</sys_mod_count>
+        <sys_mod_count>220</sys_mod_count>
         <sys_name>CheckoutFormUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
@@ -168,6 +172,6 @@ CheckoutFormUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_59b670236fa9b600ad6cd4a21c3ee4d1</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-12-21 19:34:20</sys_updated_on>
+        <sys_updated_on>2018-01-10 17:27:01</sys_updated_on>
     </sys_script_include>
 </record_update>

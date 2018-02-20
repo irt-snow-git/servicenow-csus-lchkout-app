@@ -4,47 +4,62 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>technician</element>
-            <list_id display_value="x_casus_laptop_roled_user" element="NULL" name="x_casus_laptop_roled_user" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a49986c00f14cb4012e4348ce1050e9c</list_id>
+            <list_id display_value="x_casus_laptop_roled_user" element="NULL" name="x_casus_laptop_roled_user" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">051fded00fff430012e4348ce1050eb1</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
-            <sys_created_by>nicholasmyers</sys_created_by>
-            <sys_created_on>2017-07-26 22:30:36</sys_created_on>
-            <sys_id>e89986c00f14cb4012e4348ce1050e9c</sys_id>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-01-17 18:22:48</sys_created_on>
+            <sys_id>811f16180fff430012e4348ce1050e0d</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2017-07-26 22:30:36</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-01-17 18:22:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>depot</element>
-            <list_id display_value="x_casus_laptop_roled_user" element="NULL" name="x_casus_laptop_roled_user" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a49986c00f14cb4012e4348ce1050e9c</list_id>
+            <element>technician.u_attribute7</element>
+            <list_id display_value="x_casus_laptop_roled_user" element="NULL" name="x_casus_laptop_roled_user" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">051fded00fff430012e4348ce1050eb1</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
             <sum>false</sum>
-            <sys_created_by>nicholasmyers</sys_created_by>
-            <sys_created_on>2017-07-26 22:30:36</sys_created_on>
-            <sys_id>6c9986c00f14cb4012e4348ce1050e9c</sys_id>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-01-17 18:22:48</sys_created_on>
+            <sys_id>051f16180fff430012e4348ce1050e0d</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2017-07-26 22:30:36</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-01-17 18:22:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>role</element>
-            <list_id display_value="x_casus_laptop_roled_user" element="NULL" name="x_casus_laptop_roled_user" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a49986c00f14cb4012e4348ce1050e9c</list_id>
+            <list_id display_value="x_casus_laptop_roled_user" element="NULL" name="x_casus_laptop_roled_user" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">051fded00fff430012e4348ce1050eb1</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
             <sum>false</sum>
-            <sys_created_by>nicholasmyers</sys_created_by>
-            <sys_created_on>2017-07-26 22:30:36</sys_created_on>
-            <sys_id>ec9986c00f14cb4012e4348ce1050e9c</sys_id>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-01-17 18:22:48</sys_created_on>
+            <sys_id>851f16180fff430012e4348ce1050e0d</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2017-07-26 22:30:36</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-01-17 18:22:48</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>depot</element>
+            <list_id display_value="x_casus_laptop_roled_user" element="NULL" name="x_casus_laptop_roled_user" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">051fded00fff430012e4348ce1050eb1</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-01-17 18:22:48</sys_created_on>
+            <sys_id>091f16180fff430012e4348ce1050e0d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-01-17 18:22:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -57,11 +72,11 @@
             <relationship/>
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
-            <sys_created_by>nicholasmyers</sys_created_by>
-            <sys_created_on>2017-07-26 22:30:36</sys_created_on>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-01-17 18:22:48</sys_created_on>
             <sys_customer_update>true</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_id>a49986c00f14cb4012e4348ce1050e9c</sys_id>
+            <sys_id>051fded00fff430012e4348ce1050eb1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>x_casus_laptop_roled_user</sys_name>
             <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -69,8 +84,8 @@
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
             <sys_update_name>sys_ui_list_x_casus_laptop_roled_user_null</sys_update_name>
-            <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2017-07-26 22:30:36</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-01-17 18:22:48</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

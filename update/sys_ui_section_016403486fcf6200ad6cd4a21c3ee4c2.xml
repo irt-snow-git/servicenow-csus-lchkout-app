@@ -5,55 +5,55 @@
             <element>device_type</element>
             <position>0</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-12-19 22:32:30</sys_created_on>
-            <sys_id>4c22cacf0fcb0b0012e4348ce1050e42</sys_id>
+            <sys_created_on>2018-01-02 19:26:20</sys_created_on>
+            <sys_id>d1cd1de76fd70f00ad6cd4a21c3ee4ac</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_default_device_times" sys_domain="global" view="Default view">016403486fcf6200ad6cd4a21c3ee4c2</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-12-19 22:32:30</sys_updated_on>
+            <sys_updated_on>2018-01-02 19:26:20</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>abstract_type</element>
+            <element>default_time</element>
             <position>1</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-12-19 22:32:30</sys_created_on>
-            <sys_id>cc22cacf0fcb0b0012e4348ce1050e42</sys_id>
+            <sys_created_on>2018-01-02 19:26:20</sys_created_on>
+            <sys_id>55cd1de76fd70f00ad6cd4a21c3ee4ac</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_default_device_times" sys_domain="global" view="Default view">016403486fcf6200ad6cd4a21c3ee4c2</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-12-19 22:32:30</sys_updated_on>
+            <sys_updated_on>2018-01-02 19:26:20</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>late_fee</element>
+            <element>max_time</element>
             <position>2</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-12-19 22:32:30</sys_created_on>
-            <sys_id>4022cacf0fcb0b0012e4348ce1050e43</sys_id>
+            <sys_created_on>2018-01-02 19:26:20</sys_created_on>
+            <sys_id>d5cd1de76fd70f00ad6cd4a21c3ee4ac</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_default_device_times" sys_domain="global" view="Default view">016403486fcf6200ad6cd4a21c3ee4c2</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-12-19 22:32:30</sys_updated_on>
+            <sys_updated_on>2018-01-02 19:26:20</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>max_renewal</element>
+            <element>default_grace_period</element>
             <position>3</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-12-19 22:32:30</sys_created_on>
-            <sys_id>c022cacf0fcb0b0012e4348ce1050e43</sys_id>
+            <sys_created_on>2018-01-02 19:26:20</sys_created_on>
+            <sys_id>59cd1de76fd70f00ad6cd4a21c3ee4ac</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_default_device_times" sys_domain="global" view="Default view">016403486fcf6200ad6cd4a21c3ee4c2</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-12-19 22:32:30</sys_updated_on>
+            <sys_updated_on>2018-01-02 19:26:20</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -61,69 +61,69 @@
             <element>.split</element>
             <position>4</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-12-19 22:32:30</sys_created_on>
-            <sys_id>4422cacf0fcb0b0012e4348ce1050e43</sys_id>
+            <sys_created_on>2018-01-02 19:26:20</sys_created_on>
+            <sys_id>d9cd1de76fd70f00ad6cd4a21c3ee4ac</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_default_device_times" sys_domain="global" view="Default view">016403486fcf6200ad6cd4a21c3ee4c2</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-12-19 22:32:30</sys_updated_on>
+            <sys_updated_on>2018-01-02 19:26:20</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>depot</element>
+            <element>abstract_type</element>
             <position>5</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-12-19 22:32:30</sys_created_on>
-            <sys_id>c422cacf0fcb0b0012e4348ce1050e43</sys_id>
+            <sys_created_on>2018-01-02 19:26:20</sys_created_on>
+            <sys_id>5dcd1de76fd70f00ad6cd4a21c3ee4ac</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_default_device_times" sys_domain="global" view="Default view">016403486fcf6200ad6cd4a21c3ee4c2</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-12-19 22:32:30</sys_updated_on>
+            <sys_updated_on>2018-01-02 19:26:20</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>default_time</element>
+            <element>depot</element>
             <position>6</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-12-19 22:32:30</sys_created_on>
-            <sys_id>4822cacf0fcb0b0012e4348ce1050e43</sys_id>
+            <sys_created_on>2018-01-02 19:26:20</sys_created_on>
+            <sys_id>ddcd1de76fd70f00ad6cd4a21c3ee4ac</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_default_device_times" sys_domain="global" view="Default view">016403486fcf6200ad6cd4a21c3ee4c2</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-12-19 22:32:30</sys_updated_on>
+            <sys_updated_on>2018-01-02 19:26:20</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>max_time</element>
+            <element>max_renewal</element>
             <position>7</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-12-19 22:32:30</sys_created_on>
-            <sys_id>c822cacf0fcb0b0012e4348ce1050e43</sys_id>
+            <sys_created_on>2018-01-02 19:26:20</sys_created_on>
+            <sys_id>51cd1de76fd70f00ad6cd4a21c3ee4ad</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_default_device_times" sys_domain="global" view="Default view">016403486fcf6200ad6cd4a21c3ee4c2</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-12-19 22:32:30</sys_updated_on>
+            <sys_updated_on>2018-01-02 19:26:20</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>default_grace_period</element>
+            <element>late_fee</element>
             <position>8</position>
             <sys_created_by>hedge</sys_created_by>
-            <sys_created_on>2017-12-19 22:32:30</sys_created_on>
-            <sys_id>4c22cacf0fcb0b0012e4348ce1050e43</sys_id>
+            <sys_created_on>2018-01-02 19:26:20</sys_created_on>
+            <sys_id>d1cd1de76fd70f00ad6cd4a21c3ee4ad</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_default_device_times" sys_domain="global" view="Default view">016403486fcf6200ad6cd4a21c3ee4c2</sys_ui_section>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-12-19 22:32:30</sys_updated_on>
+            <sys_updated_on>2018-01-02 19:26:20</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -138,7 +138,7 @@
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_id>016403486fcf6200ad6cd4a21c3ee4c2</sys_id>
-            <sys_mod_count>1</sys_mod_count>
+            <sys_mod_count>2</sys_mod_count>
             <sys_name>x_casus_laptop_default_device_times</sys_name>
             <sys_overrides display_value="">global</sys_overrides>
             <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -147,7 +147,7 @@
             <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
             <sys_update_name>sys_ui_section_016403486fcf6200ad6cd4a21c3ee4c2</sys_update_name>
             <sys_updated_by>hedge</sys_updated_by>
-            <sys_updated_on>2017-12-19 22:32:30</sys_updated_on>
+            <sys_updated_on>2018-01-02 19:26:20</sys_updated_on>
             <sys_user/>
             <title>true</title>
             <view display_value="Default view" name="NULL">Default view</view>

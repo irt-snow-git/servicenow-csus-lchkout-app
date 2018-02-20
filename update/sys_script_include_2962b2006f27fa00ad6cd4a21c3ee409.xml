@@ -5,7 +5,7 @@
         <active>true</active>
         <api_name>x_casus_laptop.ReturnUtils</api_name>
         <client_callable>false</client_callable>
-        <description>This Script Include consolidates code used in the Return UI Action and the Check For Late Devices Scheduled Script Execution. This allows us to make future modifications in a single area.</description>
+        <description>This Script Include consolidates code used in the Return and Renew UI Actions as well as the Check For Late Devices Scheduled Script Execution. This allows us to make future modifications in a single area.</description>
         <name>ReturnUtils</name>
         <script><![CDATA[var ReturnUtils = Class.create();
 ReturnUtils.prototype = {
@@ -88,6 +88,23 @@ ReturnUtils.prototype = {
 		return new_invoice.insert();
 	},
 	
+	hasHold: function(gr){
+		var hold = new GlideRecord('x_casus_laptop_hold');
+		hold.addActiveQuery();
+		hold.addNullQuery('end_date');
+		hold.addQuery('checkout_ticket', gr.sys_id);
+		hold.query();
+		
+		return hold.hasNext();
+	},
+	
+	customerHasHold: function(user_id){
+		var hold = new GlideRecord('x_casus_laptop_hold');
+		hold.addEncodedQuery('state=1^checkout_ticket.student_name.sys_id=' + user_id);
+		hold.query();
+		return hold.hasNext();
+	},
+	
     type: 'ReturnUtils'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
@@ -95,7 +112,7 @@ ReturnUtils.prototype = {
         <sys_created_on>2017-06-19 19:15:04</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>2962b2006f27fa00ad6cd4a21c3ee409</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>ReturnUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
@@ -103,6 +120,6 @@ ReturnUtils.prototype = {
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_2962b2006f27fa00ad6cd4a21c3ee409</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-12-21 19:27:10</sys_updated_on>
+        <sys_updated_on>2018-01-10 22:40:31</sys_updated_on>
     </sys_script_include>
 </record_update>

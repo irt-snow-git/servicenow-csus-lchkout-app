@@ -37,26 +37,20 @@ function onResponse(response){
 	//Clear the student field if criteria do not match
 	if (isStudent == "true"){
 		if(hasHold == "true"){
-			g_form.showErrorBox('student_name','Student has a hold!');
+			g_form.showErrorBox('student_name','Warning: Student has a hold!');
 			//Managers can still checkout, regardless of hold status
-			var managerRoles = "x_casus_laptop.airc_manager" + ", " +
-								"x_casus_laptop.asi_manager" + ", " + 
-								"x_casus_laptop.library_manager" + ", " +
-								"x_casus_laptop.admin";
-			var isManager = g_user.hasRoleFromList(managerRoles);
+			var managerTag = response.responseXML.getElementsByTagName("managerTag");
+			var isManager = managerTag[0].getAttribute("isManager") == "true";
 			if (!isManager) { 
 				g_form.setValue('student_name', '');
 				//Show error again because doesn't display for students?
-				g_form.showErrorBox('student_name','Student has a hold!');
+				g_form.showErrorBox('student_name','Error: Student has a hold!');
 			}
-			
 		}else{
-			//Alex's lazy refocus
+			//Alex's lazy refocus, do not remove, very important, eliminates one click
 			setTimeout(g_form.getElement('sys_display.x_casus_laptop_checkout_table.device_name').focus(),0);
 		}
 	}else{
-		g_form.showErrorBox('student_name','Customer is not a student!');
-		
 		var facultyTag = response.responseXML.getElementsByTagName("facultyTag");
 		var isFaculty = facultyTag[0].getAttribute("isFaculty");
 		
@@ -64,8 +58,9 @@ function onResponse(response){
 		var isStaff = staffTag[0].getAttribute("isStaff");
 		
 		if(isFaculty == "true" || isStaff == "true"){
-			g_form.showErrorBox('student_name','Customer is faculty/staff.');
+			g_form.showErrorBox('student_name','Warning: Customer is faculty/staff.');
 		}else{
+			g_form.showErrorBox('student_name','Error: Customer is not student, faculty, or staff.');
 			g_form.setValue('student_name', '');
 		}	
 	}
@@ -76,7 +71,7 @@ function onResponse(response){
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>362e00ae0fd6764012e4348ce1050e0d</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>31</sys_mod_count>
         <sys_name>Check Student</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -85,7 +80,7 @@ function onResponse(response){
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_client_362e00ae0fd6764012e4348ce1050e0d</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-15 18:56:48</sys_updated_on>
+        <sys_updated_on>2018-01-10 17:58:05</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <type>onChange</type>
         <ui_type>10</ui_type>

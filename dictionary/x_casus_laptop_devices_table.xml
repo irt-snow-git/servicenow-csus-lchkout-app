@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element label="Devices" max_length="40" name="x_casus_laptop_devices_table" type="collection">
+    <element audit="true" label="Devices" max_length="40" name="x_casus_laptop_devices_table" type="collection">
         <element label="Barcode" mandatory="true" max_length="40" name="barcode" type="string" unique="true"/>
-        <element label="Condition" max_length="40" name="condition" type="string"/>
         <element display="true" label="Device ID" mandatory="true" max_length="40" name="device_id" type="string" unique="true"/>
         <element label="Device type" mandatory="true" max_length="32" name="device_type" reference="x_casus_laptop_default_device_times" type="reference"/>
-        <element label="Mac Address" max_length="40" name="mac_address" type="string" unique="true"/>
         <element label="Make" max_length="40" name="make" type="string"/>
         <element label="Model" max_length="40" name="model" type="string"/>
         <element label="Notes" max_length="40" name="notes" type="string"/>
-        <element label="Price" max_length="40" name="price" type="string"/>
         <element label="Serial Number" mandatory="true" max_length="40" name="serial_number" type="string"/>
         <element choice="3" default="1" label="State" max_length="40" name="state" type="string">
             <choice>
@@ -22,12 +19,9 @@
             <element name="device_id"/>
         </index>
         <index name="index2">
-            <element name="mac_address"/>
-        </index>
-        <index name="index3">
             <element name="device_type"/>
         </index>
-        <index name="index4">
+        <index name="index3">
             <element name="barcode"/>
         </index>
     </element>
