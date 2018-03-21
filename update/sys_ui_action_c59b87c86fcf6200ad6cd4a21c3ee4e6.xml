@@ -58,8 +58,11 @@ function checkoutDevice() {
 
         //Change ticket state and remind operator of Return Time
         current.state = 'Checked Out';
-        current.update();
-        gs.addInfoMessage(current.device_name.device_id + " return time: " + current.return_time.getDisplayValue());
+        if(current.update() == null){
+			gs.error("Laptop Checkout: Confirm: Update failed on sys_id: " + current.sys_id);
+		}
+		var time = new CheckoutFormUtils().convertDateTo12HourFormat(current.return_time.getDisplayValue());
+        gs.addInfoMessage(current.device_name.device_id + " Return Time: " + time);
     } else {
         gs.addErrorMessage("Device is currently unavailable.");
         action.setRedirectURL(current);
@@ -91,7 +94,7 @@ function checkForMultipleDevices(student_sysid, abstype_sysid, checkout_limit) {
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>c59b87c86fcf6200ad6cd4a21c3ee4e6</sys_id>
-        <sys_mod_count>90</sys_mod_count>
+        <sys_mod_count>95</sys_mod_count>
         <sys_name>Confirm</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -100,7 +103,7 @@ function checkForMultipleDevices(student_sysid, abstype_sysid, checkout_limit) {
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_c59b87c86fcf6200ad6cd4a21c3ee4e6</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2018-01-03 23:14:05</sys_updated_on>
+        <sys_updated_on>2018-03-14 21:45:27</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

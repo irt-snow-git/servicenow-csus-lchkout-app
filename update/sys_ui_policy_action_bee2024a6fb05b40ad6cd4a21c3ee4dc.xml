@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sys_ui_policy_action">
     <sys_ui_policy_action action="INSERT_OR_UPDATE">
-        <disabled>false</disabled>
+        <disabled>true</disabled>
         <field>depot</field>
-        <mandatory>true</mandatory>
+        <mandatory>ignore</mandatory>
         <sys_class_name>sys_ui_policy_action</sys_class_name>
-        <sys_created_by>nicholasmyers</sys_created_by>
-        <sys_created_on>2017-08-04 18:25:39</sys_created_on>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2018-03-13 19:52:05</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
-        <sys_id>66c7ab3e6fd84300ad6cd4a21c3ee469</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_id>bee2024a6fb05b40ad6cd4a21c3ee4dc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>depot</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
-        <sys_update_name>sys_ui_policy_action_66c7ab3e6fd84300ad6cd4a21c3ee469</sys_update_name>
+        <sys_update_name>sys_ui_policy_action_bee2024a6fb05b40ad6cd4a21c3ee4dc</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2018-03-13 19:50:00</sys_updated_on>
+        <sys_updated_on>2018-03-13 19:52:05</sys_updated_on>
         <table>x_casus_laptop_roled_user</table>
-        <ui_policy display_value="Make Depot Mandatory and Visible when not Financial">aa872b3e6fd84300ad6cd4a21c3ee481</ui_policy>
-        <visible>true</visible>
+        <ui_policy display_value="Make Roled User Fields Read Only">6a7ff9c66fb05b40ad6cd4a21c3ee406</ui_policy>
+        <visible>ignore</visible>
     </sys_ui_policy_action>
 </record_update>

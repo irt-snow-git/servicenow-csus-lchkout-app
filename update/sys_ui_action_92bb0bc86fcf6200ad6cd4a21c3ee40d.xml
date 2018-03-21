@@ -25,7 +25,7 @@
 var hasHold = returnUtils.customerHasHold(current.student_name.sys_id);
 
 var accessUtils = new AccessUtils();
-var isAdmin = accessUtils.isAdmin();
+var isAdmin = false; //accessUtils.isAdmin();
 
 if(isAdmin || !hasHold){
 	var isRenewable = current.renewal_count < current.device_name.device_type.max_renewal;
@@ -49,11 +49,15 @@ if(isAdmin || !hasHold){
 				current.device_name.device_type.depot.schedule, now, newReturnTime, isAdmin));
 			
 			if(newReturnTime != ''){
-				current.return_time = newReturnTime;
+				current.return_time = newReturnTime.getDisplayValue();
 				current.renewal_count += 1;
 				current.update();
-				gs.eventQueue('x_casus_laptop.renew_email', current);
-				gs.addInfoMessage(current.device_name.device_type.device_type + " " + current.device_name.device_id + " Renewed Until " + current.return_time.getDisplayValue());
+				
+				gs.eventQueue('x_casus_laptop.renew_email', current); //send renew email
+				
+				var time = checkoutFormUtils.convertDateTo12HourFormat(current.return_time.getDisplayValue());
+				
+				gs.addInfoMessage(current.number + " " + current.device_name.device_id + " Renewed Until " + time);
 			}else{
 				gs.error("Laptop Checkout: Renew UI Action: Expected return time, received: " + newReturnTime);
 				gs.addErrorMessage("An error occurred. Please contact your ServiceNow administrator.");
@@ -81,7 +85,7 @@ if(isAdmin || !hasHold){
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_id>
-        <sys_mod_count>162</sys_mod_count>
+        <sys_mod_count>165</sys_mod_count>
         <sys_name>Renew</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -90,7 +94,7 @@ if(isAdmin || !hasHold){
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_92bb0bc86fcf6200ad6cd4a21c3ee40d</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2018-01-16 23:16:05</sys_updated_on>
+        <sys_updated_on>2018-03-14 17:50:46</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

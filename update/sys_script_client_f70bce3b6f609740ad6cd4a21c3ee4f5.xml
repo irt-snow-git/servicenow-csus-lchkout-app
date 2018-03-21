@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>active</field>
+        <global>true</global>
+        <messages/>
+        <name>Change Checkout Button Colors</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+	//Change the color of the Confirm button to green
+	changeButtonColor('Confirm', '#00CC00');
+	//Change the color of the Cancel button to red
+	changeButtonColor('cancel', '#CC0000');
+}
+
+function changeButtonColor(buttonID, backgroundColor) {
+	try{
+		//Find the button(s) by ID and change the background color
+		$$('button[id=' + buttonID + ']').each(function(elmt) {
+			elmt.style.backgroundColor = backgroundColor;
+			elmt.style.color = '#ffffff'; //make the button text white
+		});
+	}catch(e){
+		g_form.addErrorMessage("An error occurred in changeButtonColor");
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2018-03-06 20:47:07</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>f70bce3b6f609740ad6cd4a21c3ee4f5</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Change Checkout Button Colors</sys_name>
+        <sys_overrides display_value="">global</sys_overrides>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_script_client_f70bce3b6f609740ad6cd4a21c3ee4f5</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2018-03-06 20:57:18</sys_updated_on>
+        <table>x_casus_laptop_checkout_table</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

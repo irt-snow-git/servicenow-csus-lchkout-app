@@ -19,7 +19,7 @@
         <sys_updated_by>hedge</sys_updated_by>
         <sys_updated_on>2017-04-18 21:39:57</sys_updated_on>
         <table>x_casus_laptop_checkout_table</table>
-        <ui_policy display_value="Make Fields Read-Only">54c108506f52b240ad6cd4a21c3ee46e</ui_policy>
+        <ui_policy display_value="Make Checkout Ticket Fields Read-Only">54c108506f52b240ad6cd4a21c3ee46e</ui_policy>
         <visible>ignore</visible>
     </sys_ui_policy_action>
 </record_update>

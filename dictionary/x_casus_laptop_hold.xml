@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element label="Hold" max_length="40" name="x_casus_laptop_hold" type="collection">
+    <element audit="true" label="Hold" max_length="40" name="x_casus_laptop_hold" type="collection">
         <element label="Active" max_length="40" name="active" read_only="true" type="boolean"/>
-        <element attributes="ref_auto_completer=AJAXTableCompleter,ref_ac_columns=student_name;student_name.u_attribute7,ref_ac_columns_search=true,ref_ac_order_by=sys_updated_on" label="Checkout ticket" mandatory="true" max_length="32" name="checkout_ticket" reference="x_casus_laptop_checkout_table" type="reference"/>
+        <element attributes="ref_auto_completer=AJAXTableCompleter,ref_ac_columns=device_name;device_name.barcode,ref_ac_columns_search=true,ref_ac_order_by=sys_updated_on" label="Checkout ticket" max_length="32" name="checkout_ticket" reference="x_casus_laptop_checkout_table" reference_qual="javascript: new RestrictReferenceFields().restrictCheckoutTicket()" type="reference" use_reference_qualifier="advanced"/>
         <element label="Description" mandatory="true" max_length="200" name="description" type="string"/>
         <element label="End date" max_length="40" name="end_date" type="glide_date_time"/>
         <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
@@ -14,7 +14,11 @@
                 <element label="Closed" sequence="3" value="4"/>
             </choice>
         </element>
+        <element attributes="ref_auto_completer=AJAXTableCompleter,ref_ac_columns=u_attribute7,ref_ac_columns_search=true" label="Student" mandatory="true" max_length="32" name="student" reference="sys_user" reference_qual="javascript: new RestrictReferenceFields().restrictHoldStudent()" type="reference" use_reference_qualifier="advanced"/>
         <index name="index">
+            <element name="student"/>
+        </index>
+        <index name="index2">
             <element name="checkout_ticket"/>
         </index>
     </element>

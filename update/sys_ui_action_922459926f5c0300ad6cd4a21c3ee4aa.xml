@@ -4,7 +4,7 @@
         <action_name>mark_as_paid</action_name>
         <active>true</active>
         <client>false</client>
-        <comments/>
+        <comments>Deactivates the current invoice record. Because invoices are associated with holds, it is desired that the hold also be moved to the 'Closed' state. Intended for use by technicians with the proper role when the customer has paid the invoice fee.</comments>
         <condition>current.state=='1'</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
@@ -42,7 +42,9 @@
 
 current.state = '3';
 current.active = 'false';
-current.update();]]></script>
+current.update();
+
+gs.addInfoMessage(current.number + " marked as paid.");]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -53,7 +55,7 @@ current.update();]]></script>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>922459926f5c0300ad6cd4a21c3ee4aa</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Mark as Paid</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -62,7 +64,7 @@ current.update();]]></script>
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_ui_action_922459926f5c0300ad6cd4a21c3ee4aa</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-08-17 17:50:58</sys_updated_on>
+        <sys_updated_on>2018-03-06 20:30:57</sys_updated_on>
         <table>x_casus_laptop_invoice</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_casus_laptop.RestrictReferenceFields</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>RestrictReferenceFields</name>
+        <script><![CDATA[var RestrictReferenceFields = Class.create();
+RestrictReferenceFields.prototype = {
+	initialize: function() {
+	},
+	
+	restrictCheckoutTicket: function(){
+		if(!current.student){
+			return;
+		}
+		
+		//sys_user_grmember has the user to group relationship
+		var gr = new GlideRecord('x_casus_laptop_checkout_table');
+		gr.addQuery('student_name', current.student);
+		gr.query();
+		
+		var list = ' ';
+		while(gr.next()){
+			list += (',' + gr.sys_id);
+		}
+		return 'sys_idIN' + list;
+	},
+	
+	restrictHoldStudent: function(){
+		if(!current.checkout_ticket){
+			return;
+		}
+		
+		return 'sys_id=' + current.checkout_ticket.student_name;
+	},
+	
+	type: 'RestrictReferenceFields'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>hedge</sys_created_by>
+        <sys_created_on>2018-02-28 22:11:35</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>ff726bf90fec174012e4348ce1050e7a</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>RestrictReferenceFields</sys_name>
+        <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
+        <sys_update_name>sys_script_include_ff726bf90fec174012e4348ce1050e7a</sys_update_name>
+        <sys_updated_by>hedge</sys_updated_by>
+        <sys_updated_on>2018-02-28 22:43:04</sys_updated_on>
+    </sys_script_include>
+</record_update>

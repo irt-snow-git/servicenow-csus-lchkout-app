@@ -3,7 +3,7 @@
     <sys_dictionary action="INSERT_OR_UPDATE" element="hold" table="x_casus_laptop_invoice">
         <active>true</active>
         <array>false</array>
-        <attributes>ref_auto_completer=AJAXTableCompleter,ref_ac_columns=checkout_ticket;checkout_ticket.student_name;checkout_ticket.student_name.u_attribute7,ref_ac_columns_search=true</attributes>
+        <attributes>ref_auto_completer=AJAXTableCompleter,ref_ac_columns=student;student.u_attribute7;checkout_ticket,ref_ac_columns_search=true</attributes>
         <audit>false</audit>
         <calculation>(function calculatedFieldValue(current) {
 
@@ -53,7 +53,7 @@
         <sys_created_on>2016-11-15 20:44:21</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>cb6b666a0f47a20012e4348ce1050e04</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Hold</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy/>
@@ -61,7 +61,7 @@
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_dictionary_x_casus_laptop_invoice_hold</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2018-01-08 22:29:03</sys_updated_on>
+        <sys_updated_on>2018-03-09 21:40:44</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

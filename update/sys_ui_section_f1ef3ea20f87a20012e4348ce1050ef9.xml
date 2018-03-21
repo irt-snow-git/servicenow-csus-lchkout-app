@@ -4,70 +4,84 @@
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>number</element>
             <position>0</position>
-            <sys_created_by>nicholasmyers</sys_created_by>
-            <sys_created_on>2018-01-24 00:17:56</sys_created_on>
-            <sys_id>65e966920fbb070012e4348ce1050ee8</sys_id>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-02-28 22:30:56</sys_created_on>
+            <sys_id>d5aa6ffd0fec174012e4348ce1050ec5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_hold" sys_domain="global" view="Default view">f1ef3ea20f87a20012e4348ce1050ef9</sys_ui_section>
-            <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2018-01-24 00:17:56</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-02-28 22:30:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>student</element>
+            <position>1</position>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-02-28 22:30:56</sys_created_on>
+            <sys_id>59aa6ffd0fec174012e4348ce1050ec5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_hold" sys_domain="global" view="Default view">f1ef3ea20f87a20012e4348ce1050ef9</sys_ui_section>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-02-28 22:30:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>checkout_ticket</element>
-            <position>1</position>
-            <sys_created_by>nicholasmyers</sys_created_by>
-            <sys_created_on>2018-01-24 00:17:56</sys_created_on>
-            <sys_id>e5e966920fbb070012e4348ce1050ee8</sys_id>
+            <position>2</position>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-02-28 22:30:56</sys_created_on>
+            <sys_id>d9aa6ffd0fec174012e4348ce1050ec5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_hold" sys_domain="global" view="Default view">f1ef3ea20f87a20012e4348ce1050ef9</sys_ui_section>
-            <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2018-01-24 00:17:56</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-02-28 22:30:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>2</position>
-            <sys_created_by>nicholasmyers</sys_created_by>
-            <sys_created_on>2018-01-24 00:17:56</sys_created_on>
-            <sys_id>29e9a6920fbb070012e4348ce1050e58</sys_id>
+            <position>3</position>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-02-28 22:30:56</sys_created_on>
+            <sys_id>5daa6ffd0fec174012e4348ce1050ec5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_hold" sys_domain="global" view="Default view">f1ef3ea20f87a20012e4348ce1050ef9</sys_ui_section>
-            <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2018-01-24 00:17:56</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-02-28 22:30:56</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>state</element>
-            <position>3</position>
-            <sys_created_by>nicholasmyers</sys_created_by>
-            <sys_created_on>2018-01-24 00:17:56</sys_created_on>
-            <sys_id>a9e9a6920fbb070012e4348ce1050e58</sys_id>
+            <position>4</position>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-02-28 22:30:56</sys_created_on>
+            <sys_id>ddaa6ffd0fec174012e4348ce1050ec5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_hold" sys_domain="global" view="Default view">f1ef3ea20f87a20012e4348ce1050ef9</sys_ui_section>
-            <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2018-01-24 00:17:56</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-02-28 22:30:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>end_date</element>
-            <position>4</position>
-            <sys_created_by>nicholasmyers</sys_created_by>
-            <sys_created_on>2018-01-24 00:17:56</sys_created_on>
-            <sys_id>2de9a6920fbb070012e4348ce1050e58</sys_id>
+            <position>5</position>
+            <sys_created_by>hedge</sys_created_by>
+            <sys_created_on>2018-02-28 22:30:56</sys_created_on>
+            <sys_id>51aa6ffd0fec174012e4348ce1050ec6</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_casus_laptop_hold" sys_domain="global" view="Default view">f1ef3ea20f87a20012e4348ce1050ef9</sys_ui_section>
-            <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2018-01-24 00:17:56</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-02-28 22:30:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -82,7 +96,7 @@
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_id>f1ef3ea20f87a20012e4348ce1050ef9</sys_id>
-            <sys_mod_count>8</sys_mod_count>
+            <sys_mod_count>10</sys_mod_count>
             <sys_name>x_casus_laptop_hold</sys_name>
             <sys_overrides display_value="">global</sys_overrides>
             <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
@@ -90,8 +104,8 @@
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
             <sys_update_name>sys_ui_section_f1ef3ea20f87a20012e4348ce1050ef9</sys_update_name>
-            <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2018-01-24 00:17:56</sys_updated_on>
+            <sys_updated_by>hedge</sys_updated_by>
+            <sys_updated_on>2018-02-28 22:30:56</sys_updated_on>
             <sys_user/>
             <title>true</title>
             <view display_value="Default view" name="NULL">Default view</view>

@@ -30,14 +30,16 @@
         <mandatory>true</mandatory>
         <message/>
         <message_html><![CDATA[<p>Hello ${student_name.first_name} ${student_name.last_name},</p>
-<p>You checked out an item from the ${center} Checkout Center.</p>
-<p>Your Item:&nbsp;${device_name.device_type} (${device_name})</p>
-<p>The item checkout time was ${checkout_time}. It is due back ${return_time}.</p>
+<p>As a reminder, a device in your possession will be due back at the ${center} Checkout Center before ${return_time}.</p>
+<p>Your Device: ${device_name.device_type} (${device_name})</p>
+<p>Checkout Time: ${checkout_time}.</p>
+<p>Please be prepared to show your OneCard upon return of the device.</p>
+<p>As per ${center} Checkout Center policy, a ${device_name.device_type.late_fee} late fee will be assessed to late returns. Upon cumulative late returns&nbsp;device borrowing privileges will be suspended for the remainder of the semester. A $10.00 fee will also be imposed.</p>
 <p>Thank you,</p>
 <p>${center} Laptop Checkout Center</p>]]></message_html>
         <message_list/>
         <message_text/>
-        <name>Customer Checkout Email</name>
+        <name>Checkout Email</name>
         <omit_watermark>false</omit_watermark>
         <order>100</order>
         <push_message_only>false</push_message_only>
@@ -48,7 +50,7 @@
         <send_self>false</send_self>
         <sms_alternate/>
         <style/>
-        <subject>Checkout from ${center} Checkout Center</subject>
+        <subject>${center} Device Checkout ${number}</subject>
         <subscribable>false</subscribable>
         <sys_class_name>sysevent_email_action</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
@@ -56,8 +58,8 @@
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>8ef948ab6f29b600ad6cd4a21c3ee444</sys_id>
-        <sys_mod_count>27</sys_mod_count>
-        <sys_name>Customer Checkout Email</sys_name>
+        <sys_mod_count>32</sys_mod_count>
+        <sys_name>Checkout Email</sys_name>
         <sys_overrides/>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy/>
@@ -65,7 +67,7 @@
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sysevent_email_action_8ef948ab6f29b600ad6cd4a21c3ee444</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2017-07-05 21:30:31</sys_updated_on>
+        <sys_updated_on>2018-03-07 22:16:44</sys_updated_on>
         <sys_version>2</sys_version>
         <template/>
         <type>email</type>

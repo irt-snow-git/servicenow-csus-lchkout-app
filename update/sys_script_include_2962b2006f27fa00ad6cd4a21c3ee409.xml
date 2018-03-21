@@ -69,6 +69,7 @@ ReturnUtils.prototype = {
 		var new_hold = new GlideRecord('x_casus_laptop_hold');
 		new_hold.initialize();
 		new_hold.active = true;
+		new_hold.student = gr.student_name;
 		new_hold.checkout_ticket = gr.sys_id;
 		new_hold.description = description;
 		return new_hold.insert();
@@ -100,7 +101,7 @@ ReturnUtils.prototype = {
 	
 	customerHasHold: function(user_id){
 		var hold = new GlideRecord('x_casus_laptop_hold');
-		hold.addEncodedQuery('state=1^checkout_ticket.student_name.sys_id=' + user_id);
+		hold.addEncodedQuery('state=1^student.sys_id=' + user_id);
 		hold.query();
 		return hold.hasNext();
 	},
@@ -112,7 +113,7 @@ ReturnUtils.prototype = {
         <sys_created_on>2017-06-19 19:15:04</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>2962b2006f27fa00ad6cd4a21c3ee409</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>32</sys_mod_count>
         <sys_name>ReturnUtils</sys_name>
         <sys_package display_value="Laptop Checkout" source="x_casus_laptop">ba205f426f7a2a00ad6cd4a21c3ee477</sys_package>
         <sys_policy>read</sys_policy>
@@ -120,6 +121,6 @@ ReturnUtils.prototype = {
         <sys_scope display_value="Laptop Checkout">ba205f426f7a2a00ad6cd4a21c3ee477</sys_scope>
         <sys_update_name>sys_script_include_2962b2006f27fa00ad6cd4a21c3ee409</sys_update_name>
         <sys_updated_by>hedge</sys_updated_by>
-        <sys_updated_on>2018-01-10 22:40:31</sys_updated_on>
+        <sys_updated_on>2018-03-01 21:41:49</sys_updated_on>
     </sys_script_include>
 </record_update>
